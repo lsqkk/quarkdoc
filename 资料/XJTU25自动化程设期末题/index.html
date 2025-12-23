@@ -203,17 +203,17 @@
 <h3 id="_9">题目描述</h3>
 <p>在神经网络中，Sigmoid函数是常用的激活函数。其计算分为两步：</p>
 <ol>
-<li>线性组合：$z = w_1x_1 + w_2x_2 + b$</li>
-<li>Sigmoid变换：$y = 1 / (1 + e^{-z})$</li>
+<li>线性组合：<code>z = w_1 * x_1 + w_2 * x_2 + b</code></li>
+<li>Sigmoid变换：<code>y = 1 / (1 + exp(-z))</code></li>
 </ol>
-<p>给定参数：$w_1 = 0.15, w_2 = 0.25, b = -0.35$</p>
+<p>给定参数：<code>w_1 = 0.15, w_2 = 0.25, b = -0.35</code></p>
 <h3 id="_10">要求</h3>
 <ol>
 <li>定义两个<code>double</code>类型函数：</li>
 <li><code>double linear_combination(double x1, double x2)</code>：计算线性组合</li>
 <li><code>double sigmoid(double z)</code>：计算Sigmoid值</li>
 <li>在主函数中：</li>
-<li>从键盘输入两个浮点数<code>x1</code>和<code>x2</code></li>
+<li>从键盘输入两个浮点数<code>x_1</code>和<code>x_2</code></li>
 <li>调用上述函数计算<code>y</code>值</li>
 <li>输出<code>y</code>，保留两位小数</li>
 </ol>
