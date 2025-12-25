@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器 - QuarkDoc</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u9999\u6a59\u6d3eAI Pro \u7efc\u5408\u5f00\u53d1\u7b14\u8bb0\uff1a\u4ece\u96f6\u642d\u5efa\u4e2a\u4ebaAI\u670d\u52a1\u5668";
+        var mkdocs_page_input_path = "OrangePi\\index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">项目简介</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12">内容全景：已覆盖的12个实战项目</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">📘 第一篇：系统基石与核心服务搭建</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">📙 第二篇：开发环境与网络深度配置</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ai">📗 第三篇：本地AI模型服务部署</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web">📕 第四篇：Web服务与外部访问</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">笔记核心特色！</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-debug">1. 真实详尽的DEBUG记录</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">2. 纯粹的小白视角与跟练友好性</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">3. 问题驱动的实用主义</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4">4. 全栈技能覆盖与系统性</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">谁适合使用这份笔记？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">说明</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">OrangePi</li>
+      <li class="breadcrumb-item active">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ai-pro-ai">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</h1>
+<h2 id="_1">项目简介</h2>
+<p>这是一套由一名普通学生开发者，在宿舍环境中利用香橙派AI Pro开发板，从零开始搭建个人AI服务器的完整实战记录。香橙派AI Pro是一款基于昇腾AI处理器的边缘计算开发板，具备较强的本地AI推理能力和丰富的接口，非常适合作为学习、开发和轻量级个人服务器平台。</p>
+<p>本系列笔记完全源于个人真实探索过程，记录了从开箱接线到复杂服务部署的每一个步骤，重点包含了大量实际操作中遇到的真实报错、详细诊断思路和经过验证的解决方案。如果你也是初学者，想亲手搭建一个属于自己的开发服务器或AI应用平台，这份笔记可以提供一条清晰、可行、踩过坑的路径。</p>
+<h2 id="12">内容全景：已覆盖的12个实战项目</h2>
+<p>笔记目前系统性地整理了四大板块、共12个核心实战项目，后续将持续更新更多应用场景。</p>
+<h3 id="_2">📘 第一篇：系统基石与核心服务搭建</h3>
+<ul>
+<li><strong>0. 系统初始化与基础连接</strong>：从开箱、接线、首次启动，到基础网络配置与必备诊断。</li>
+<li><strong>1. C++开发环境搭建</strong>：安装编译器、编写并编译你的第一个程序，管理多文件项目。</li>
+<li><strong>2. CasaOS系统管理面板部署</strong>：安装图形化管理面板，并解决常见的访问失败问题。</li>
+<li><strong>3. 私有云盘部署（Nextcloud）</strong>：搭建个人网盘，解决“不信任的域名”、配置语法错误等典型问题。</li>
+</ul>
+<h3 id="_3">📙 第二篇：开发环境与网络深度配置</h3>
+<ul>
+<li><strong>4. Docker容器化环境</strong>：安装Docker引擎，解决权限与网络问题，掌握容器与镜像管理。</li>
+<li><strong>5. SSH远程访问深度配置</strong>：配置安全的远程连接，诊断连接故障，设置密钥对认证。</li>
+<li><strong>6. Nano文本编辑器使用详解</strong>：学习在终端中高效编辑配置文件的必备技能。</li>
+<li><strong>7. 智能音箱项目</strong>：集成DeepSeek语音交互，涵盖硬件准备、音频调试、云端API对接与本地部署。</li>
+</ul>
+<h3 id="ai">📗 第三篇：本地AI模型服务部署</h3>
+<ul>
+<li><strong>8. OLLAMA本地AI模型服务</strong>：在CasaOS中自定义安装，部署本地大语言模型，并处理模型下载、容器启动等典型故障。</li>
+<li><strong>9. Open WebUI可视化前端</strong>：为OLLAMA模型部署一个类似ChatGPT的Web交互界面。</li>
+</ul>
+<h3 id="web">📕 第四篇：Web服务与外部访问</h3>
+<ul>
+<li><strong>10. Nginx配置与管理</strong>：安装、配置反向代理，管理多个Web站点，总结维护命令。</li>
+<li><strong>11. 域名与内网穿透</strong>：实现外网访问，涵盖域名解析、内网穿透服务（如ChmIFrp）配置与Cloudflare集成。</li>
+<li><strong>12. WordPress站点部署</strong>：快速搭建个人博客或网站，注重文件权限管理、安全配置与维护。</li>
+</ul>
+<h2 id="_4">笔记核心特色！</h2>
+<h3 id="1-debug">1. 真实详尽的DEBUG记录</h3>
+<p>这不是一份只展示成功路径的理想化教程。每一章节都包含一个独立的“常见故障与调试路径汇总”部分，详细记录了我在部署过程中实际遇到的各类报错信息、排查逻辑和最终有效的解决方案。你可以看到真实的错误提示和对应的修复命令。</p>
+<h3 id="2">2. 纯粹的小白视角与跟练友好性</h3>
+<p>所有内容均由一名非专业运维的学生一步步摸索、验证后整理而成。避免了专业教程中可能跳过的“显而易见”的步骤。只要你按照笔记顺序操作，完全可以从零开始复现整个环境搭建过程。</p>
+<h3 id="3">3. 问题驱动的实用主义</h3>
+<p>笔记结构围绕“实现目标 -&gt; 操作步骤 -&gt; 可能遇到的问题 -&gt; 如何解决”展开，强调在实践中学习和排错的能力培养，而不仅仅是命令的堆砌。</p>
+<h3 id="4">4. 全栈技能覆盖与系统性</h3>
+<p>笔记规划了一条清晰的技能成长路径：从硬件连接到系统管理，再到容器化、AI应用部署和网络服务发布，帮你构建在边缘设备上进行全栈开发的完整知识体系。</p>
+<h2 id="_5">谁适合使用这份笔记？</h2>
+<ul>
+<li><strong>嵌入式与边缘计算初学者</strong>：希望以香橙派AI Pro为起点，进行实战学习的开发者。</li>
+<li><strong>高校学生或爱好者</strong>：想在宿舍、实验室搭建低成本个人服务器，用于开发、测试或AI应用探索。</li>
+<li><strong>需要一份“避坑指南”的人</strong>：厌倦了那些只讲成功步骤，遇到报错就无从下手的教程。</li>
+<li><strong>希望系统学习Linux服务部署的实践者</strong>：通过一个完整的项目串联起Docker、Nginx、内网穿透等多个实用技能。</li>
+</ul>
+<h2 id="_6">说明</h2>
+<p>本仓库是一个持续更新的活文档。随着更多项目（如更复杂的AI应用、物联网集成、自动化脚本等）的探索，笔记内容将不断扩展。欢迎前往 <a href="https://github.com/lsqkk/OrangePi">仓库</a> 给个 <strong>Star</strong> 关注更新，也期待你的实践反馈~</p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../about/" class="btn btn-neutral float-left"
+      title="关于本站"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="1/" class="btn btn-neutral float-right" title="香橙派AI Pro综合开发笔记 - 1">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../about/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="1/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

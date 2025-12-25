@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>香橙派AI Pro综合开发笔记 - 4 - QuarkDoc</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u9999\u6a59\u6d3eAI Pro\u7efc\u5408\u5f00\u53d1\u7b14\u8bb0 - 4";
+        var mkdocs_page_input_path = "OrangePi\\4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">香橙派AI Pro综合开发笔记 - 4</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#10-nginx">10. 服务器Nginx配置与管理</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#101">10.1 概述</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#102">10.2 安装与基础配置</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#103">10.3 站点配置详解</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#104">10.4 常见故障与调试路径</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#105">10.5 常用维护命令总结</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#11">11. 域名、内网穿透与外部访问配置</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#111">11.1 概述</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#112-dns">11.2 域名购买与DNS解析基础</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#113-chmlfrp">11.3 内网穿透服务：ChmlFrp详解</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#114">11.4 常见故障与调试路径</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#115-cloudflare">11.5 集成Cloudflare的注意事项</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12-wordpress">12. WordPress站点部署与管理</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#121">12.1 概述</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#122">12.2 环境准备与部署流程</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#123">12.3 文件系统权限管理</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#124">12.4 常见故障与深度调试路径</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#125">12.5 安全与维护建议</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">OrangePi</li>
+      <li class="breadcrumb-item active">香橙派AI Pro综合开发笔记 - 4</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ai-pro-4">香橙派AI Pro综合开发笔记 - 4</h1>
+<h3 id="10-nginx">10. 服务器Nginx配置与管理</h3>
+<h4 id="101">10.1 概述</h4>
+<p>Nginx是一个高性能的HTTP和反向代理服务器，在本项目中承担了托管网站（WordPress）的核心任务。在基于ARM架构的香橙派上部署Nginx，需要特别注意其与现有服务（如CasaOS网关）的兼容性与资源协调。</p>
+<h4 id="102">10.2 安装与基础配置</h4>
+<p>通过包管理器安装Nginx是最佳实践：</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install nginx -y
+</code></pre>
+<p>安装后，关键目录结构如下：</p>
+<ul>
+<li><code>/etc/nginx/</code>: 主配置目录。</li>
+<li><code>/etc/nginx/nginx.conf</code>: 主配置文件。</li>
+<li><code>/etc/nginx/sites-available/</code>: 可用站点的配置文件存放处。</li>
+<li><code>/etc/nginx/sites-enabled/</code>: 通过符号链接启用站点的目录。</li>
+<li><code>/var/www/html/</code>: 默认的网站根目录。</li>
+</ul>
+<h4 id="103">10.3 站点配置详解</h4>
+<p>一个典型站点的配置文件（例如 <code>/etc/nginx/sites-available/my_site</code>）包含以下核心部分：</p>
+<pre><code class="language-nginx">server {
+    listen 8081; # 指定监听的端口，需避开常用服务端口
+    server_name _; # 可填写域名，或下划线表示通配
+
+    root /var/www/my_site; # 网站文件存放的根目录
+    index index.php index.html index.htm; # 默认索引文件顺序
+
+    location / {
+        try_files $uri $uri/ /index.php?$args; # 对于WordPress等PHP应用的关键规则
+    }
+
+    # 处理PHP请求，转发给PHP-FPM进程
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    # 禁止访问隐藏文件（如.htaccess）
+    location ~ /\.ht {
+        deny all;
+    }
+}
+</code></pre>
+<p>配置完成后，需创建符号链接以启用站点，并测试配置语法：</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/my_site /etc/nginx/sites-enabled/
+sudo nginx -t
+</code></pre>
+<h4 id="104">10.4 常见故障与调试路径</h4>
+<p><strong>故障一：Nginx服务启动失败，提示端口绑定错误</strong></p>
+<ul>
+<li><strong>现象</strong>：执行 <code>sudo systemctl start nginx</code> 失败，日志显示 <code>bind() to 0.0.0.0:80 failed (98: Unknown error)</code>。</li>
+<li><strong>原因分析</strong>：端口被其他应用占用。在已部署CasaOS的环境中，其自带的 <code>casaos-gateway</code> 服务会占用80端口。如果Nginx的默认站点或自定义站点也配置为监听80端口，则会发生冲突。</li>
+<li><strong>解决方案</strong>：</li>
+<li>检查端口占用情况：<code>sudo netstat -tulpn | grep :80</code>。确认占用进程。</li>
+<li>为自建网站改用其他未占用端口（如8081、8080等）。编辑站点配置文件，将 <code>listen</code> 指令后的端口号修改为选定端口。</li>
+<li>禁用Nginx的默认站点（如果不需要）：<code>sudo rm /etc/nginx/sites-enabled/default</code>。</li>
+<li>重启Nginx：<code>sudo systemctl restart nginx</code>。</li>
+</ul>
+<p><strong>故障二：Nginx服务启动失败，提示日志文件无法打开</strong></p>
+<ul>
+<li><strong>现象</strong>：<code>sudo nginx -t</code> 测试通过，但 <code>sudo systemctl start nginx</code> 失败。使用 <code>sudo systemctl status nginx</code> 查看详细状态，或在日志中发现 <code>open() “/var/log/nginx/access.log” failed (2: No such file or directory)</code>。</li>
+<li><strong>原因分析</strong>：Nginx的日志目录 <code>/var/log/nginx/</code> 不存在，或目录权限不正确，导致Nginx进程（通常以 <code>www-data</code> 用户运行）无法创建或写入日志文件。</li>
+<li><strong>解决方案</strong>：</li>
+<li>创建日志目录并设置正确权限：
+     <code>bash
+     sudo mkdir -p /var/log/nginx
+     sudo chown -R www-data:www-data /var/log/nginx</code></li>
+<li>为防止系统重启后目录再次丢失导致服务异常，可以修改Nginx的systemd服务单元文件，添加启动前检查。使用 <code>sudo systemctl edit --full nginx.service</code> 命令，在 <code>[Service]</code> 部分的 <code>ExecStartPre</code> 之前加入：
+     <code>ini
+     ExecStartPre=/bin/mkdir -p /var/log/nginx
+     ExecStartPre=/bin/chown -R www-data:www-data /var/log/nginx</code></li>
+<li>重载systemd配置并重启服务：
+     <code>bash
+     sudo systemctl daemon-reload
+     sudo systemctl restart nginx</code></li>
+</ul>
+<p><strong>故障三：网站访问出现404或502错误</strong></p>
+<ul>
+<li><strong>现象</strong>：Nginx服务运行正常，但通过浏览器访问站点时，返回502 Bad Gateway或404 Not Found。</li>
+<li><strong>原因分析</strong>：</li>
+<li><strong>502错误</strong>：通常意味着Nginx无法与后端的PHP处理器（PHP-FPM）通信。可能是PHP-FPM服务未启动，或者Nginx配置中 <code>fastcgi_pass</code> 指定的socket路径不正确。</li>
+<li><strong>404错误</strong>：通常意味着Nginx找不到请求的文件或索引文件。检查 <code>root</code> 指令指向的目录路径是否正确，以及 <code>index</code> 指令列出的文件是否存在于该目录中。</li>
+<li><strong>解决方案</strong>：</li>
+<li>检查PHP-FPM服务状态：<code>sudo systemctl status php8.1-fpm</code>。确保其处于 <code>active (running)</code> 状态。</li>
+<li>核对Nginx配置中 <code>fastcgi_pass</code> 的socket路径是否与PHP-FPM的实际监听路径一致（通常位于 <code>/run/php/</code> 目录下）。</li>
+<li>检查网站根目录（<code>root</code> 指令）的路径是否存在，以及权限是否正确（应允许 <code>www-data</code> 用户读取）。</li>
+</ul>
+<p><strong>故障四：服务重启后，依赖Nginx的服务无法启动</strong></p>
+<ul>
+<li><strong>现象</strong>：配置了其他服务（如内网穿透客户端frpc）依赖于Nginx服务，但服务器重启后，这些依赖服务启动失败。</li>
+<li><strong>原因分析</strong>：Systemd服务间的启动顺序和依赖关系未正确配置，导致frpc在Nginx准备好之前就已启动并尝试连接，从而失败。</li>
+<li><strong>解决方案</strong>：修改frpc的systemd服务文件（如 <code>/etc/systemd/system/frpc.service</code>），在 <code>[Unit]</code> 部分明确声明依赖关系。
+  <code>ini
+  [Unit]
+  Description=Frpc Client Service
+  After=network.target nginx.service # 确保在网络和Nginx服务之后启动
+  Wants=nginx.service # 表明希望nginx启动，但不作为强依赖
+  # Requires=nginx.service # 谨慎使用强依赖，可能导致循环依赖或启动失败</code></li>
+</ul>
+<p>修改后执行 <code>sudo systemctl daemon-reload</code> 使配置生效。</p>
+<h4 id="105">10.5 常用维护命令总结</h4>
+<pre><code class="language-bash"># 测试配置文件语法（任何修改后必做）
+sudo nginx -t
+
+# 重新加载配置（不中断服务）
+sudo systemctl reload nginx
+
+# 完全重启服务
+sudo systemctl restart nginx
+
+# 查看实时错误日志（调试利器）
+sudo tail -f /var/log/nginx/error.log
+
+# 查看当前监听的端口和进程
+sudo netstat -tulpn | grep nginx
+</code></pre>
+<h3 id="11">11. 域名、内网穿透与外部访问配置</h3>
+<h4 id="111">11.1 概述</h4>
+<p>在本地网络环境中部署的服务器，若需从互联网访问，必须解决两个核心问题：一是将内网IP和端口映射到公网，二是将便于记忆的域名指向该公网地址。本部分涵盖域名解析、内网穿透服务（以ChmlFrp为例）的集成配置。</p>
+<h4 id="112-dns">11.2 域名购买与DNS解析基础</h4>
+<ol>
+<li><strong>域名注册</strong>：在诸如Namecheap、GoDaddy、阿里云等域名注册商处购买心仪的域名。</li>
+<li><strong>DNS解析类型</strong>：</li>
+<li><strong>A记录</strong>：将域名直接指向一个IPv4地址。</li>
+<li><strong>CNAME记录</strong>：将域名指向另一个域名（别名）。在内网穿透场景中，常被要求将自有域名CNAME到服务商提供的网关域名。</li>
+<li><strong>NS记录</strong>：指定由哪个DNS服务器来管理该域名的解析。例如，你可以使用Cloudflare的DNS服务来获得更快的解析速度和安全特性。</li>
+</ol>
+<h4 id="113-chmlfrp">11.3 内网穿透服务：ChmlFrp详解</h4>
+<p>ChmlFrp是一种基于frp协议的内网穿透服务，它通过在具有公网IP的服务器上运行服务端（frps），在用户本地设备上运行客户端（frpc），建立一条加密隧道，将公网流量转发到内网服务。</p>
+<p><strong>核心概念与操作流程：</strong></p>
+<ol>
+<li><strong>注册与实名认证</strong>：访问ChmlFrp官网完成注册。根据中国法规，使用国内节点通常需要进行实名认证。</li>
+<li><strong>选择节点</strong>：在控制面板中选择一个服务器节点。选择时需注意：</li>
+<li><strong>国内节点</strong>：通常速度较快，但要求映射的域名<strong>必须已完成ICP备案</strong>。</li>
+<li><strong>海外节点</strong>：无备案要求，但可能速度稍慢。适合个人测试或使用未备案域名。</li>
+<li><strong>创建隧道</strong>：这是核心配置步骤。在“隧道管理”中创建新隧道，需填写：</li>
+<li><strong>本地IP</strong>：运行服务的设备在内网中的IP地址（如 <code>192.168.1.100</code>）。若frpc客户端与服务在同一设备，可填 <code>127.0.0.1</code>。</li>
+<li><strong>本地端口</strong>：内网服务实际监听的端口（如Nginx的 <code>8081</code>）。</li>
+<li><strong>隧道类型</strong>：根据服务选择 <code>TCP</code>、<code>HTTP</code> 或 <code>HTTPS</code>。Web服务通常选择 <code>HTTP</code>。</li>
+<li><strong>远程端口</strong>：服务商分配的公网访问端口（部分服务商支持自定义，部分自动分配）。</li>
+<li><strong>自定义域名</strong>：如果希望使用自己的域名访问，在此处填写（如 <code>www.yourdomain.com</code>）。同时，需要在域名DNS设置中添加一条CNAME记录，指向服务商提供的地址（如 <code>sj.frp.one</code>）。</li>
+<li><strong>配置与启动客户端</strong>：</li>
+<li><strong>下载客户端</strong>：根据本地设备的操作系统和架构（如Linux ARM64）下载对应的frpc客户端。</li>
+<li><strong>获取配置文件</strong>：在ChmlFrp控制面板的“配置文件”页面，选择对应节点后生成配置文本。</li>
+<li><strong>运行客户端</strong>：将配置文本保存为 <code>frpc.ini</code>，与frpc可执行文件放在同一目录，并启动客户端。可配置为系统服务以实现开机自启。</li>
+</ol>
+<h4 id="114">11.4 常见故障与调试路径</h4>
+<p><strong>故障一：隧道创建成功，但无法通过外网地址访问</strong></p>
+<ul>
+<li><strong>现象</strong>：frpc客户端显示隧道“运行中”，但浏览器访问外网地址（域名:端口）超时或连接被拒绝。</li>
+<li><strong>原因分析</strong>：</li>
+<li><strong>本地服务未运行</strong>：内网端口的服务（如Nginx）没有启动。</li>
+<li><strong>防火墙/安全组策略</strong>：本地服务器的防火墙或云服务商的安全组未放行内网端口。</li>
+<li><strong>节点或端口被封锁</strong>：某些网络环境（如校园网、企业网）可能封锁了特定端口或协议。</li>
+<li><strong>域名解析未生效或错误</strong>：DNS记录配置错误或尚未全球生效（TTL时间）。</li>
+<li><strong>解决方案</strong>：</li>
+<li><strong>本地验证</strong>：首先确保在内网通过 <code>http://本地IP:端口</code> 可以正常访问服务。</li>
+<li><strong>检查服务状态</strong>：确认Nginx/Web服务正在运行并监听正确端口：<code>sudo netstat -tulpn | grep :端口号</code>。</li>
+<li><strong>检查防火墙</strong>：临时关闭本地防火墙测试，或添加放行规则。例如使用UFW：<code>sudo ufw allow 端口号/tcp</code>。</li>
+<li><strong>检查frpc日志</strong>：查看frpc客户端输出的日志，确认隧道建立无错误。</li>
+<li><strong>验证DNS解析</strong>：在命令行使用 <code>nslookup 你的域名</code> 或 <code>dig 你的域名</code> 检查解析出的IP是否为ChmlFrp节点的IP。</li>
+<li><strong>更换端口/节点</strong>：尝试更换隧道的外网端口，或切换到另一个服务节点（如从国内节点换到海外节点）。</li>
+</ul>
+<p><strong>故障二：同时运行多个服务（如网盘和网站）时，只有一个能穿透访问</strong></p>
+<ul>
+<li><strong>现象</strong>：配置了多条隧道，但只有最新添加的或其中一条能正常工作。</li>
+<li><strong>原因分析</strong>：frpc的配置文件 <code>frpc.ini</code> 中可能只包含了一条隧道的配置，或者多条隧道配置存在冲突。</li>
+<li><strong>解决方案</strong>：确保 <code>frpc.ini</code> 文件正确合并了所有隧道的配置。一个标准的 <code>frpc.ini</code> 文件结构如下：
+  ```ini
+  [common]
+  server_addr = chmlfrp.cn # 服务器地址
+  server_port = 7000 # 服务端端口
+  token = xxxxxxxx # 认证令牌（如有）</li>
+</ul>
+<p>[service1_web] # 第一条隧道，名称唯一
+  type = tcp
+  local_ip = 127.0.0.1
+  local_port = 8081
+  remote_port = 50001</p>
+<p>[service2_nextcloud] # 第二条隧道，名称唯一
+  type = tcp
+  local_ip = 192.168.31.213
+  local_port = 8080
+  remote_port = 50002
+  ```</p>
+<p>每次在控制面板新增隧道并生成新配置后，需要将新生成的 <code>[隧道名]</code> 段内容<strong>追加</strong>到本地现有的 <code>frpc.ini</code> 文件中，注意<strong>保留且只有一个 <code>[common]</code> 段</strong>。</p>
+<p><strong>故障三：使用自有域名访问时，浏览器提示“重定向过多”或跳转到内网IP端口</strong></p>
+<ul>
+<li><strong>现象</strong>：通过 <code>www.yourdomain.com</code> 访问网站，却被重定向到类似 <code>192.168.1.100:8081</code> 的内网地址，导致无法加载。</li>
+<li><strong>原因分析</strong>：Web应用（如WordPress）在代码或数据库中配置了固定的站点地址（URL），该地址被设置为内网地址。当它接收到来自域名的请求时，仍会按照内网地址生成重定向。</li>
+<li><strong>解决方案</strong>：</li>
+<li><strong>修改Web应用配置</strong>：对于WordPress，可以通过修改 <code>wp-config.php</code> 文件，在数据库连接设置之后添加以下两行来强制使用访问者使用的域名：
+     <code>php
+     define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+     define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);</code></li>
+<li><strong>修改Nginx配置</strong>：在Nginx的站点配置文件中，确保传递给PHP-FPM的环境变量包含正确的 <code>HTTP_HOST</code> 和 <code>SERVER_PORT</code>，这有助于某些应用识别原始请求。
+     <code>nginx
+     location ~ \.php$ {
+         ...
+         fastcgi_param HTTP_HOST $host; # 传递原始请求的主机头
+         fastcgi_param SERVER_PORT $server_port; # 传递原始请求的端口
+     }</code></li>
+</ul>
+<h4 id="115-cloudflare">11.5 集成Cloudflare的注意事项</h4>
+<p>若将域名的DNS解析托管至Cloudflare以利用其CDN和安全服务，在配合内网穿透时需特别注意：</p>
+<ul>
+<li><strong>代理状态</strong>：在Cloudflare的DNS记录管理页面，为指向内网穿透地址的CNAME记录，应将代理状态设置为 <strong>“仅DNS”（灰色云朵）</strong>。如果开启代理（橙色云朵），Cloudflare会尝试代理和缓存你的流量，这可能与内网穿透隧道不兼容，导致连接失败。</li>
+<li><strong>HTTPS</strong>：Cloudflare提供灵活的SSL/TLS加密模式。即使你的内网服务是HTTP，也可以通过Cloudflare的“完全”或“灵活”SSL模式，对外提供HTTPS访问。</li>
+</ul>
+<h3 id="12-wordpress">12. WordPress站点部署与管理</h3>
+<h4 id="121">12.1 概述</h4>
+<p>WordPress是一个基于PHP和MySQL的开源内容管理系统（CMS），以其丰富的主题、插件生态和用户友好性著称。在自行托管的服务器上部署WordPress，能获得完全的控制权。本部分详细记录了在ARM架构的香橙派上，通过LEMP（Linux, Nginx, MariaDB, PHP）环境手动部署WordPress的全过程、遇到的典型问题及其解决方案。</p>
+<h4 id="122">12.2 环境准备与部署流程</h4>
+<p>WordPress运行依赖于PHP和数据库。在Nginx已安装的基础上，需完成以下步骤：</p>
+<ol>
+<li><strong>安装PHP及必要扩展</strong>：
+   WordPress核心及多数插件需要PHP与MySQL/MariaDB交互，并处理图像。</li>
+</ol>
+<p><code>bash
+   sudo apt install php8.1-fpm php8.1-mysql php8.1-curl php8.1-gd php8.1-mbstring php8.1-xml php8.1-xmlrpc php8.1-zip php8.1-opcache -y</code></p>
+<p>安装后，确认PHP-FPM服务启动：<code>sudo systemctl start php8.1-fpm &amp;&amp; sudo systemctl enable php8.1-fpm</code>。
+2. <strong>安装并配置MariaDB数据库</strong>：
+   MariaDB是MySQL的一个分支，完全兼容。</p>
+<p><code>bash
+   sudo apt install mariadb-server -y
+   sudo systemctl start mariadb &amp;&amp; sudo systemctl enable mariadb</code></p>
+<p>运行安全初始化脚本：<code>sudo mysql_secure_installation</code>。按提示设置root密码、移除匿名用户、禁止root远程登录等。
+3. <strong>为WordPress创建数据库和用户</strong>：
+   通过MySQL命令行进行操作。</p>
+<p><code>bash
+   sudo mysql -u root -p</code></p>
+<p>在MySQL交互界面中执行：</p>
+<p><code>sql
+   -- 创建专用数据库，使用推荐字符集
+   CREATE DATABASE wordpress_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   -- 创建专用用户并设置强密码
+   CREATE USER 'wp_user'@'localhost' IDENTIFIED BY 'your_strong_password_here';
+   -- 授予该用户对数据库的全部权限
+   GRANT ALL PRIVILEGES ON wordpress_db.* TO 'wp_user'@'localhost';
+   -- 刷新权限使设置生效
+   FLUSH PRIVILEGES;
+   -- 退出
+   EXIT;</code>
+4. <strong>下载并解压WordPress文件</strong>：
+   将文件放置于Nginx站点配置中 <code>root</code> 指令指定的目录。</p>
+<p><code>bash
+   # 切换到网站根目录，例如 /var/www/your_site
+   cd /var/www/your_site
+   # 下载最新中文版WordPress压缩包
+   sudo wget https://cn.wordpress.org/latest-zh_CN.tar.gz
+   # 解压并移除压缩包
+   sudo tar -xzvf latest-zh_CN.tar.gz --strip-components=1
+   sudo rm latest-zh_CN.tar.gz</code>
+5. <strong>配置Nginx服务器块</strong>：
+   如第10部分所述，创建正确的Nginx配置文件是关键。针对WordPress的配置需要包含处理PHP请求以及美化链接（固定链接）的规则。核心 <code>location ~ \.php$</code> 块和 <code>try_files</code> 指令必须正确。
+6. <strong>运行WordPress安装向导</strong>：
+   完成上述步骤后，通过浏览器访问你的网站（内网IP:端口或域名）。首次访问将进入著名的“五分钟安装”页面。在此处填写之前创建的数据库信息（数据库名、用户名、密码，主机为 <code>localhost</code>），并设置站点标题、管理员账号和密码。</p>
+<h4 id="123">12.3 文件系统权限管理</h4>
+<p>正确的文件权限对于安全与功能至关重要。WordPress需要向 <code>wp-content/uploads</code> 等目录写入文件（如上传的图片、插件）。</p>
+<ol>
+<li><strong>推荐的所有权与权限设置</strong>：
+   <code>bash
+   # 将网站目录的所有者设为Web服务器运行用户（通常是www-data）
+   sudo chown -R www-data:www-data /var/www/your_site
+   # 设置目录权限为755，文件权限为644
+   sudo find /var/www/your_site -type d -exec chmod 755 {} \;
+   sudo find /var/www/your_site -type f -exec chmod 644 {} \;</code></li>
+<li><strong>处理上传问题</strong>：
+   如果WordPress后台无法上传文件，通常是 <code>wp-content/uploads</code> 目录的权限问题。确保该目录对Web服务器用户可写：
+   <code>bash
+   sudo chown -R www-data:www-data /var/www/your_site/wp-content/uploads</code></li>
+</ol>
+<h4 id="124">12.4 常见故障与深度调试路径</h4>
+<p><strong>故障一：安装页面提示“建立数据库连接时出错”</strong></p>
+<ul>
+<li><strong>现象</strong>：访问安装页面时，WordPress显示经典错误信息：“Error establishing a database connection”。</li>
+<li><strong>原因分析与排查</strong>：</li>
+<li><strong>配置文件未更新</strong>：<code>wp-config.php</code> 文件仍为示例模板，其中的数据库连接信息（<code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code>）是占位符。<ul>
+<li><strong>检查</strong>：<code>sudo cat /var/www/your_site/wp-config.php | grep -A2 “DB_”</code>。</li>
+<li><strong>解决</strong>：使用 <code>sudo nano</code> 命令编辑该文件，填入正确的数据库名、用户名和密码。</li>
+</ul>
+</li>
+<li><strong>数据库凭据错误</strong>：<code>wp-config.php</code> 中填写的数据库用户、密码或数据库名与MariaDB中创建的不一致。<ul>
+<li><strong>验证</strong>：使用配置文件中的信息尝试手动登录：
+   <code>bash
+   mysql -u wp_user -p’your_password’ -D wordpress_db -e “SELECT ‘Success’;”</code></li>
+<li><strong>解决</strong>：根据验证结果，修正配置文件或在MariaDB中重新创建用户/数据库。</li>
+</ul>
+</li>
+<li><strong>MariaDB服务未运行</strong>：数据库服务进程未启动。<ul>
+<li><strong>检查</strong>：<code>sudo systemctl status mariadb</code>。</li>
+<li><strong>解决</strong>：启动服务 <code>sudo systemctl start mariadb</code>。</li>
+</ul>
+</li>
+<li><strong>数据库主机问题</strong>：在极少数自定义端口的场景，需确认 <code>DB_HOST</code> 定义是否正确（默认 <code>localhost</code> 即可）。</li>
+</ul>
+<p><strong>故障二：安装后访问站点，页面被重定向到内网IP地址或错误端口</strong></p>
+<ul>
+<li><strong>现象</strong>：通过公网域名访问网站，浏览器地址栏却跳转为类似 <code>http://192.168.1.100:8081</code> 的内网地址，导致无法加载。</li>
+<li><strong>原因分析</strong>：此问题被称为“重定向循环”。WordPress在数据库 <code>wp_options</code> 表（或 <code>wp-config.php</code> 文件）中存储了 <code>siteurl</code> 和 <code>home</code> 两个选项。如果这些值被设置为内网地址，当用户通过域名访问时，WordPress会尝试将请求重定向到其认为的“正确”地址（即内网地址）。</li>
+<li><strong>解决方案</strong>：</li>
+<li>
+<p><strong>首选方案（修改配置文件，一劳永逸）</strong>：
+     编辑 <code>wp-config.php</code>，在 <code>require_once(ABSPATH . ‘wp-settings.php’);</code> 这一行<strong>之前</strong>，添加以下定义：</p>
+<p><code>php
+ define(‘WP_SITEURL’, ‘https://’ . $_SERVER[‘HTTP_HOST’]);
+ define(‘WP_HOME’, ‘https://’ . $_SERVER[‘HTTP_HOST’]);</code></p>
+<p>这两行代码强制WordPress动态地使用当前访问的域名作为站点地址，完美适配内网穿透场景。如果全站使用HTTPS，则协议应为 <code>https://</code>。
+  2. <strong>辅助方案（修改Nginx配置）</strong>：
+ 确保Nginx在将请求转发给PHP-FPM时，传递了正确的主机头。在Nginx站点配置的 <code>location ~ \.php$</code> 块内检查或添加：</p>
+<p><code>nginx
+ fastcgi_param HTTP_HOST $host;
+ fastcgi_param SERVER_PORT $server_port;</code>
+  3. <strong>临时方案（修改数据库，若已安装）</strong>：
+ 如果WordPress已完成安装，可以通过SQL命令直接修改数据库。</p>
+<p><code>bash
+ sudo mysql -u root -p wordpress_db</code></p>
+<p><code>sql
+ UPDATE wp_options SET option_value = ‘https://your-domain.com’ WHERE option_name IN (‘siteurl’, ‘home’);</code></p>
+</li>
+</ul>
+<p><strong>故障三：更新主题、插件或WordPress核心时，提示需要FTP凭据</strong></p>
+<ul>
+<li><strong>现象</strong>：在后台尝试更新时，弹出对话框要求输入FTP服务器信息。</li>
+<li><strong>原因分析</strong>：PHP进程（<code>www-data</code> 用户）对WordPress文件系统的<strong>所有者</strong>权限不足。当文件的所有者是另一个用户（例如，通过SFTP上传文件的用户）时，<code>www-data</code> 无权直接修改这些文件。</li>
+<li><strong>解决方案</strong>：</li>
+<li><strong>最佳实践（更改文件所有权）</strong>：如12.3节所述，将整个WordPress目录的所有权递归地授予Web服务器用户。
+     <code>bash
+     sudo chown -R www-data:www-data /var/www/your_site</code></li>
+<li><strong>替代方案（修改配置文件）</strong>：在 <code>wp-config.php</code> 中添加一行代码，让WordPress使用直接文件系统操作而非FTP。但此方法略逊于更改所有权。
+     <code>php
+     define(‘FS_METHOD’, ‘direct’);</code></li>
+</ul>
+<p><strong>故障四：上传文件时提示“由于安全原因，此文件类型不受支持”或其他上传失败</strong></p>
+<ul>
+<li><strong>现象</strong>：在媒体库上传图片或其他文件失败。</li>
+<li><strong>原因分析与排查</strong>：</li>
+<li><strong>PHP上传限制</strong>：PHP默认对上传文件的大小和超时有限制。<ul>
+<li><strong>检查与修改</strong>：编辑PHP配置文件，例如 <code>/etc/php/8.1/fpm/php.ini</code>，修改以下参数后重启 <code>php8.1-fpm</code>：
+   <code>ini
+   upload_max_filesize = 64M
+   post_max_size = 128M
+   max_execution_time = 300</code></li>
+</ul>
+</li>
+<li><strong>目录权限问题</strong>：如12.3节所述，<code>wp-content/uploads</code> 目录必须对 <code>www-data</code> 用户可写。</li>
+<li><strong>Nginx客户端最大body大小限制</strong>：Nginx也有一个对应的客户端请求体大小限制。<ul>
+<li><strong>检查与修改</strong>：在Nginx站点配置的 <code>server</code> 块或 <code>http</code> 块中添加：<code>client_max_body_size 100M;</code>，然后重载Nginx。</li>
+</ul>
+</li>
+</ul>
+<h4 id="125">12.5 安全与维护建议</h4>
+<ol>
+<li><strong>保持更新</strong>：定期登录后台更新WordPress核心、已安装的主题和插件。这是防范安全漏洞最重要的措施。</li>
+<li><strong>使用强密码</strong>：为WordPress管理员账户和数据库用户使用高强度、唯一的密码。</li>
+<li><strong>限制登录尝试</strong>：安装如 <code>Limit Login Attempts Reloaded</code> 这类插件，防止暴力破解。</li>
+<li><strong>定期备份</strong>：备份应包含两部分：</li>
+<li><strong>数据库</strong>：使用 <code>mysqldump</code> 命令或插件备份。</li>
+<li><strong>网站文件</strong>：特别是 <code>/wp-content/</code> 目录。</li>
+<li><strong>审计插件与主题</strong>：仅从官方仓库或可信来源安装，并及时删除不使用的插件和主题。</li>
+<li><strong>配置调试模式</strong>：仅在排查问题时，在 <code>wp-config.php</code> 中开启调试模式，问题解决后务必关闭。
+   <code>php
+   // 启用调试日志（不显示给访客）
+   define(‘WP_DEBUG’, true);
+   define(‘WP_DEBUG_LOG’, true); // 日志将保存在 /wp-content/debug.log
+   define(‘WP_DEBUG_DISPLAY’, false); // 重要：不在页面上显示错误
+   @ini_set(‘display_errors’, 0);</code></li>
+</ol>
+<p>通过遵循上述部署流程、理解权限模型并掌握核心问题的调试方法，可以在自建服务器上稳定、安全地运行WordPress网站。这套基于香橙派和LEMP环境的实践，其原理同样适用于其他Linux服务器平台。</p>
+<p><a href="../3/">上一篇</a></p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../3/" class="btn btn-neutral float-left"
+      title="香橙派AI Pro综合开发笔记 - 3"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" class="btn btn-neutral float-right" title="XJTU自动化25级C程序设计期末考试">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../3/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

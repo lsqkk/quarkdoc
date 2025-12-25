@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>香橙派AI Pro综合开发笔记 - 1 - QuarkDoc</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u9999\u6a59\u6d3eAI Pro\u7efc\u5408\u5f00\u53d1\u7b14\u8bb0 - 1";
+        var mkdocs_page_input_path = "OrangePi\\1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">香橙派AI Pro综合开发笔记 - 1</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#0">0. 系统初始化与基础连接</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#01">0.1 硬件连接与首次启动</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#02">0.2 基础系统配置与问题诊断</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#03">0.3 关键初始操作</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-c">1. C++开发环境搭建与编译</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11">1.1 安装编译器与基础工具</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12">1.2 编写与编译单文件程序</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13">1.3 管理多文件项目</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-casaos">2. CasaOS系统管理面板部署</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-casaos">2.1 安装CasaOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22">2.2 访问失败问题诊断与解决</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23">2.3 初始化设置</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-nextcloud">3. 基于Nextcloud的私有云盘部署</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-casaosnextcloud">3.1 通过CasaOS安装Nextcloud</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32">3.2 解决“不信任的域名”错误</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33">3.3 修复配置文件语法错误</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-windows">3.4 配置外部存储与Windows访问</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">OrangePi</li>
+      <li class="breadcrumb-item active">香橙派AI Pro综合开发笔记 - 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ai-pro-1">香橙派AI Pro综合开发笔记 - 1</h1>
+<h2 id="0">0. 系统初始化与基础连接</h2>
+<h3 id="01">0.1 硬件连接与首次启动</h3>
+<ol>
+<li><strong>硬件准备</strong>：将存储有官方Ubuntu系统镜像的TF卡插入香橙派卡槽，通过HDMI线连接显示器，连接USB键盘鼠标，最后连接电源适配器。</li>
+<li><strong>系统启动</strong>：上电后，系统将自动启动。首次启动可能需完成新用户创建、语言时区设置等初始化配置。默认用户通常为 <code>orangepi</code>，部分镜像可能为 <code>HwHiAiUser</code>。</li>
+<li><strong>网络连接（桌面环境）</strong>：</li>
+<li>点击桌面右上角网络图标，选择可用的Wi-Fi网络或插入网线进行有线连接。</li>
+<li>打开终端，使用 <code>hostname -I</code> 命令验证网络连通性并获取IP地址。此IP将用于后续SSH远程连接。</li>
+</ol>
+<h3 id="02">0.2 基础系统配置与问题诊断</h3>
+<ul>
+<li><strong>更新软件源</strong>：为避免后续安装软件失败，首先应更新软件包列表。
+  <code>bash
+  sudo apt update</code></li>
+<li><strong>音频设备检测失败问题</strong>：在执行智能音箱项目时，若 <code>aplay -l</code> 命令返回 <code>no soundcards found</code>，表明系统未正确识别或驱动音频硬件。</li>
+<li><strong>解决方案A（安装驱动）</strong>：
+    <code>bash
+    sudo apt install -y alsa-base alsa-utils pulseaudio
+    sudo reboot</code></li>
+<li><strong>解决方案B（根本性解决）</strong>：若方案一无效，最可靠的方案是更换为香橙派<strong>官方推荐</strong>或社区验证过音频功能完整的系统镜像，并重新刷写系统。这是解决因内核配置或驱动缺失导致硬件识别问题的最有效路径。</li>
+</ul>
+<h3 id="03">0.3 关键初始操作</h3>
+<ul>
+<li><strong>修改默认密码</strong>：为安全起见，应立即修改默认用户密码。
+  <code>bash
+  passwd</code></li>
+<li><strong>开启SSH服务（为后续远程开发准备）</strong>：
+  <code>bash
+  sudo systemctl enable --now ssh</code></li>
+</ul>
+<h2 id="1-c">1. C++开发环境搭建与编译</h2>
+<h3 id="11">1.1 安装编译器与基础工具</h3>
+<ol>
+<li><strong>安装GCC/G++编译器</strong>：
+   <code>bash
+   sudo apt update
+   sudo apt install -y g++ build-essential</code></li>
+<li><strong>验证安装</strong>：
+   <code>bash
+   g++ --version</code></li>
+</ol>
+<h3 id="12">1.2 编写与编译单文件程序</h3>
+<ol>
+<li><strong>使用编辑器创建C++源文件</strong>：
+   <code>bash
+   nano hello.cpp</code></li>
+<li><strong>输入示例代码</strong>：
+   <code>cpp
+   #include &lt;iostream&gt;
+   int main() {
+       std::cout &lt;&lt; "Hello, Orange Pi!" &lt;&lt; std::endl;
+       return 0;
+   }</code></li>
+<li><strong>保存并编译</strong>：使用 <code>g++</code> 将源代码编译为可执行文件。
+   <code>bash
+   g++ hello.cpp -o hello</code></li>
+<li><strong>运行程序</strong>：
+   <code>bash
+   ./hello</code></li>
+</ol>
+<h3 id="13">1.3 管理多文件项目</h3>
+<p>对于涉及多个源文件的项目，推荐使用 <code>Makefile</code> 或 <code>CMake</code> 管理编译流程。</p>
+<ol>
+<li><strong>使用Makefile示例</strong>：创建名为 <code>Makefile</code> 的文件（无扩展名）。
+   ```makefile
+   CXX = g++
+   TARGET = myapp
+   SRCS = main.cpp utils.cpp</li>
+</ol>
+<p>$(TARGET): $(SRCS)
+       $(CXX) $(SRCS) -o $(TARGET)</p>
+<p>clean:
+       rm -f $(TARGET)
+   <code>2. **执行编译与清理**：</code>bash
+   make      # 编译
+   ./myapp   # 运行
+   make clean # 清理生成的文件
+   ```</p>
+<h2 id="2-casaos">2. CasaOS系统管理面板部署</h2>
+<h3 id="21-casaos">2.1 安装CasaOS</h3>
+<p>CasaOS是一个直观的家庭服务器管理面板，可极大简化后续服务的部署。</p>
+<pre><code class="language-bash">curl -fsSL https://get.casaos.io | sudo bash
+</code></pre>
+<h3 id="22">2.2 访问失败问题诊断与解决</h3>
+<p>安装完成后，在浏览器使用 <code>http://&lt;香橙派IP&gt;</code> 访问可能失败，需按以下流程排查：</p>
+<ol>
+<li><strong>检查服务状态</strong>：使用 <code>systemctl</code> 命令而非有问题的 <code>casaos service</code> 命令。</li>
+</ol>
+<p><code>bash
+   sudo systemctl status casaos</code></p>
+<ul>
+<li>若服务未运行，则启动并启用自启：
+     <code>bash
+     sudo systemctl enable --now casaos</code></li>
+<li><strong>检查端口监听</strong>：CasaOS默认监听80端口。确认服务正确绑定到所有网络接口（<code>0.0.0.0</code>或<code>::</code>），而非仅本地（<code>127.0.0.1</code>）。</li>
+</ul>
+<p><code>bash
+   sudo netstat -tunlp | grep :80</code>
+3. <strong>关键故障：服务仅监听本地地址</strong>：若 <code>netstat</code> 显示CasaOS仅绑定到 <code>127.0.0.1</code>，表明安装不完整。</p>
+<ul>
+<li><strong>解决方案</strong>：彻底卸载后重装。
+     <code>bash
+     # 停止服务并卸载
+     sudo systemctl stop casaos
+     curl -fsSL https://get.casaos.io/uninstall | sudo bash
+     # 清理残留Docker容器（如果有）
+     sudo docker rm -f $(sudo docker ps -a -q --filter="ancestor=casaos") 2&gt;/dev/null || true
+     # 重新执行安装命令
+     curl -fsSL https://get.casaos.io | sudo bash</code></li>
+<li><strong>检查防火墙</strong>：如果系统防火墙启用，需放行80端口。</li>
+</ul>
+<p><code>bash
+   sudo ufw allow 80
+   sudo ufw status</code></p>
+<h3 id="23">2.3 初始化设置</h3>
+<p>在浏览器成功访问后，按界面提示创建CasaOS管理员账户。</p>
+<h2 id="3-nextcloud">3. 基于Nextcloud的私有云盘部署</h2>
+<h3 id="31-casaosnextcloud">3.1 通过CasaOS安装Nextcloud</h3>
+<ol>
+<li>登录CasaOS，进入“App Store”。</li>
+<li>搜索“Nextcloud”，点击安装。</li>
+<li>在安装配置页面，<strong>务必记录或自定义管理员账号密码</strong>，并<strong>修改默认端口</strong>（如从<code>8080</code>改为<code>8088</code>），以避免与系统其他服务冲突。</li>
+</ol>
+<h3 id="32">3.2 解决“不信任的域名”错误</h3>
+<p>安装后通过 <code>http://&lt;IP&gt;:&lt;端口&gt;</code> 访问，可能提示“不信任的域名”。</p>
+<ul>
+<li><strong>原因</strong>：访问地址未添加到Nextcloud的信任域列表。</li>
+<li><strong>解决方案</strong>：通过Nextcloud内置的 <code>occ</code> 命令行工具修正。</li>
+<li>进入Nextcloud容器并执行命令：
+     <code>bash
+     docker exec -it nextcloud /bin/bash
+     cd /var/www/html
+     php occ config:system:set trusted_domains 1 --value="你的IP:端口"</code></li>
+<li>重启容器使配置生效：
+     <code>bash
+     docker restart nextcloud</code></li>
+</ul>
+<h3 id="33">3.3 修复配置文件语法错误</h3>
+<p>在修正信任域过程中，可能因手动编辑导致 <code>/var/www/html/config/config.php</code> 文件出现语法错误（如 <code>ParseError</code>）。</p>
+<ul>
+<li><strong>诊断</strong>：在容器内运行语法检查。
+  <code>bash
+  php -l /var/www/html/config/config.php</code></li>
+<li><strong>修复</strong>：典型的错误是数组元素格式错误或重复的配置键。</li>
+<li><strong>备份原配置</strong>。</li>
+<li>使用 <code>sed</code> 或 <code>nano</code> 直接编辑文件，确保：<ul>
+<li>每个数组项以逗号分隔。</li>
+<li><code>trusted_domains</code> 等键名唯一。</li>
+<li>数组括号正确匹配。</li>
+</ul>
+</li>
+<li><strong>有效修复示例</strong>：删除重复的 <code>trusted_domains</code> 配置块，并确保格式正确。
+     <code>bash
+     # 进入容器编辑配置文件
+     docker exec -it nextcloud /bin/bash
+     cd /var/www/html/config
+     cp config.php config.php.backup
+     # 使用sed删除可能重复的错误行（例如37-41行）
+     sed -i '37,41d' config.php</code></li>
+</ul>
+<h3 id="34-windows">3.4 配置外部存储与Windows访问</h3>
+<ol>
+<li><strong>挂载外部存储目录</strong>：在Nextcloud网页端，“设置”-&gt;“外部存储”中，添加本地目录（如<code>/data/cloud_files</code>），实现文件统一管理。</li>
+<li><strong>在Windows中映射网络驱动器</strong>：</li>
+<li>在Nextcloud“设置”底部获取WebDAV URL。</li>
+<li>在Windows“此电脑”中，“映射网络驱动器”，输入URL并凭据，即可像本地磁盘一样访问。</li>
+</ol>
+<p><a href="../2/">下一篇</a></p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../" class="btn btn-neutral float-left"
+      title="香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../2/" class="btn btn-neutral float-right" title="香橙派AI Pro综合开发笔记 - 2">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

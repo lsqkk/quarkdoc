@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>香橙派AI Pro综合开发笔记 - 3 - QuarkDoc</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u9999\u6a59\u6d3eAI Pro\u7efc\u5408\u5f00\u53d1\u7b14\u8bb0 - 3";
+        var mkdocs_page_input_path = "OrangePi\\3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">香橙派AI Pro综合开发笔记 - 3</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">OrangePi</li>
+      <li class="breadcrumb-item active">香橙派AI Pro综合开发笔记 - 3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ai-pro-3">香橙派AI Pro综合开发笔记 - 3</h1>
+<h1 id="8-ollamaai">8. OLLAMA本地AI模型服务部署</h1>
+<h2 id="_1">概述</h2>
+<p>Ollama是一个用于在本地运行、管理和部署大型语言模型（LLM）的开源工具。它通过容器化部署，将模型的下载、加载和推理服务封装成简单的API，使得在边缘设备（如香橙派AI Pro）上运行LLM成为可能。本部分将详细阐述在CasaOS系统中部署Ollama的完整流程、配置细节、以及排查各类问题的系统化方法。</p>
+<h2 id="_2">详细部署流程</h2>
+<h3 id="1">1. 前期准备与环境确认</h3>
+<p>在开始部署前，请通过SSH连接至香橙派AI Pro，并执行以下命令以确认系统状态：</p>
+<pre><code class="language-bash"># 确认Docker服务状态
+sudo systemctl status docker
+# 确认可用内存资源（关键，直接影响模型选择）
+free -h
+# 确认CasaOS数据存储路径
+ls -la /DATA/
+</code></pre>
+<p>理想的基线是Docker服务处于活动状态，且系统拥有至少4GB的可用内存。</p>
+<h3 id="2-casaos">2. CasaOS自定义安装配置</h3>
+<p>由于CasaOS应用商店可能未预置Ollama，需使用“自定义安装”功能。点击应用商店右上角的“+”或“Custom Install”，填写以下关键参数：</p>
+<ul>
+<li><strong>Docker Image</strong>: <code>ollama/ollama:latest</code></li>
+<li><strong>容器端口 (Container Port)</strong>: <code>11434</code></li>
+<li><strong>Web UI端口 (Host Port)</strong>: 选择一个未被占用的端口，例如<code>11435</code>。</li>
+<li><strong>卷映射 (Volumes)</strong>: 这是保证数据持久化的关键配置。</li>
+<li><strong>主机 (Host)</strong>: <code>/DATA/AppData/ollama</code> （建议路径，便于集中管理）</li>
+<li><strong>容器 (Container)</strong>: <code>/root/.ollama</code></li>
+<li><strong>设备 (Devices)</strong>: 保持为空或按需配置。早期版本尝试挂载<code>/dev</code>目录可能导致<code>cgroup</code>错误，如无特殊需求建议留空。</li>
+<li><strong>环境变量</strong>: 初始部署通常无需额外环境变量。</li>
+</ul>
+<h3 id="3">3. 部署后初始化与模型下载</h3>
+<p>应用启动后，需要通过容器终端执行命令来下载模型。</p>
+<ol>
+<li><strong>进入容器终端</strong>：在CasaOS应用界面，点击已部署的Ollama应用图标，通常会有“终端”或“Console”入口。或通过SSH使用命令：
+   <code>bash
+   docker exec -it &lt;容器名称或ID&gt; /bin/bash</code></li>
+<li><strong>下载模型</strong>：在容器终端内，执行下载命令。<strong>请务必根据设备内存选择微型模型</strong>：
+   <code>bash
+   # 选项1: 超小型模型，约0.5B参数
+   ollama pull qwen:0.5b
+   # 选项2: 小型模型，约1.1B参数
+   ollama pull tinyllama:1.1b
+   # 选项3: 小型对话模型，约3B参数（需内存充足）
+   ollama pull neural-chat:3b</code></li>
+<li><strong>验证模型运行</strong>：下载完成后，可进行简易测试。
+   <code>bash
+   # 启动交互式对话（按Ctrl+D退出）
+   ollama run qwen:0.5b
+   # 或通过API进行一次性测试
+   curl http://127.0.0.1:11434/api/generate -d '{"model": "qwen:0.5b", "prompt": "你好", "stream": false}'</code></li>
+</ol>
+<h2 id="_3">常见故障与调试路径汇总</h2>
+<p>在部署和运行过程中，你可能会遇到以下问题，以下是经过验证的解决路径。</p>
+<h3 id="1-invalid-cgroup-device-type-p">问题1：容器启动失败，报错 <code>invalid cgroup device type “p”</code></h3>
+<ul>
+<li><strong>问题现象</strong>：在CasaOS中启动Ollama应用失败，日志或报错信息中包含 <code>invalid cgroup device type “p”</code>。</li>
+<li><strong>原因分析</strong>：此错误通常与Docker容器的“设备(Devices)”配置中填写了无效或格式不完整的设备路径有关（例如一个孤立的“p”字符）。也可能是Docker守护进程的cgroup状态异常。</li>
+<li><strong>解决路径</strong>：</li>
+<li><strong>检查配置</strong>：进入Ollama应用的编辑页面，检查“设备(Devices)”配置项。<strong>确保该字段内容完整、正确，或直接清空该字段</strong>。</li>
+<li><strong>重启Docker服务</strong>：在SSH中执行 <code>sudo systemctl restart docker</code>。此操作会短暂影响所有容器，但能重置Docker的cgroup状态。</li>
+<li><strong>重启宿主系统</strong>：如果上述步骤无效，重启香橙派是最彻底的解决方案。</li>
+</ul>
+<h3 id="2">问题2：容器名称冲突导致部署失败</h3>
+<ul>
+<li><strong>问题现象</strong>：重复安装或重启应用时，报错 <code>Conflict. The container name “...“ is already in use ...</code>。</li>
+<li><strong>原因分析</strong>：CasaOS或Docker尝试创建一个与现有容器同名的新容器。</li>
+<li><strong>解决路径</strong>：</li>
+<li>通过SSH执行命令，列出所有相关容器并确认其状态：
+     <code>bash
+     docker ps -a --filter “name=ollama”</code></li>
+<li>强制删除处于 <code>Created</code>、<code>Exited</code> 或 <code>Dead</code> 状态的残留容器：
+     <code>bash
+     docker rm -f &lt;残留容器的ID&gt;</code></li>
+<li>返回CasaOS，删除旧的应用实例，然后重新进行“自定义安装”。</li>
+</ul>
+<h3 id="375">问题3：模型下载进度条长时间卡住（例如75%）</h3>
+<ul>
+<li><strong>问题现象</strong>：使用 <code>ollama pull</code> 命令时，下载速度降至0，进度条长时间停滞。</li>
+<li><strong>原因分析</strong>：这通常是<strong>正常现象</strong>。Ollama下载分为两步：第一步是从网络下载模型压缩包（显示下载速度），第二步是在本地解压、校验和转换模型格式（速度显示为0，进度条暂停）。第二步完全依赖CPU和磁盘I/O，在香橙派上可能耗时较长。</li>
+<li><strong>解决路径</strong>：</li>
+<li><strong>切勿中断</strong>：不要关闭终端或停止容器。</li>
+<li><strong>验证活动</strong>：打开另一个SSH终端，通过以下命令观察系统是否在处理：
+     <code>bash
+     # 查看Ollama容器日志
+     docker logs -f &lt;ollama容器名&gt;
+     # 观察系统资源占用
+     htop</code></li>
+<li>只要CPU或磁盘I/O有较高占用，或日志显示 <code>verifying sha256 digest</code>、<code>writing manifest</code> 等信息，请耐心等待10-30分钟或更久。</li>
+</ul>
+<h3 id="4-error-500-internal-server-error-llama-runner-process-has-terminated-signal-killed">问题4：运行模型时提示 <code>Error: 500 Internal Server Error: llama runner process has terminated: signal: killed</code></h3>
+<ul>
+<li><strong>问题现象</strong>：执行 <code>ollama run</code> 命令后，模型加载过程中进程被终止。</li>
+<li><strong>原因分析</strong>：这是典型的<strong>内存不足（OOM）</strong> 问题。系统内核因内存耗尽而强制终止了模型进程。</li>
+<li><strong>解决路径</strong>：</li>
+<li>
+<p><strong>检查容器内存限制</strong>（最常见原因）：</p>
+<p><code>bash
+ docker inspect &lt;ollama容器ID&gt; | grep -i memory</code></p>
+<p>如果输出显示 <code>“Memory”: 268435456</code>（即256MB），则限制过低。
+  2. <strong>调整内存限制</strong>：在CasaOS中编辑Ollama应用设置，找到内存限制选项，将其修改为 <strong><code>4096M</code> (4GB)</strong> 或 <strong><code>8192M</code> (8GB)</strong>，保存并重启应用。
+  3. <strong>选择更小模型</strong>：如果调整限制后问题依旧，表明物理内存紧张，必须换用更小的模型（如从 <code>llama3.2:1b</code> 换为 <code>qwen:0.5b</code>）。
+  4. <strong>启用系统交换空间</strong>：作为辅助手段，为系统创建交换文件可以提供虚拟内存缓冲。</p>
+<p><code>bash
+ sudo fallocate -l 2G /swapfile
+ sudo chmod 600 /swapfile
+ sudo mkswap /swapfile
+ sudo swapon /swapfile
+ # 使用 free -h 确认Swap已启用</code></p>
+</li>
+</ul>
+<h3 id="5apiwebuiollama">问题5：API请求或WebUI无法连接到Ollama服务</h3>
+<ul>
+<li><strong>问题现象</strong>：浏览器访问 <code>http://&lt;香橙派IP&gt;:11434</code> 显示拒绝连接，或Open WebUI无法获取模型列表。</li>
+<li><strong>原因分析</strong>：端口映射错误、容器未运行或防火墙阻止。</li>
+<li><strong>解决路径</strong>：</li>
+<li>
+<p><strong>确认容器状态与端口映射</strong>：</p>
+<p><code>bash
+ docker ps | grep ollama  # 确认状态为Up
+ # 确认端口映射，应看到 0.0.0.0:11434-&gt;11434/tcp 或类似</code>
+  2. <strong>从宿主机内部测试</strong>：</p>
+<p><code>bash
+ curl http://127.0.0.1:11434/api/tags</code></p>
+<p>如果宿主机能通但外部不通，检查CasaOS中Ollama应用的“Web UI端口”映射设置是否正确。
+  3. <strong>检查防火墙</strong>：如果校园网或系统防火墙阻止了 <code>11434</code> 端口，需配置放行规则。</p>
+</li>
+</ul>
+<h1 id="9-open-webui">9. Open WebUI可视化前端部署与集成</h1>
+<h2 id="_4">概述</h2>
+<p>Open WebUI（原Ollama WebUI）是一个功能丰富的Web应用程序，为Ollama提供了一个类似于ChatGPT的友好图形界面。它通过Docker容器独立部署，并通过网络API与后端的Ollama服务通信。成功集成后，用户可通过浏览器进行模型对话、管理聊天历史等操作。</p>
+<h2 id="_5">详细部署流程</h2>
+<h3 id="1-casaosopen-webui">1. 通过CasaOS自定义安装部署Open WebUI</h3>
+<p>与部署Ollama类似，使用“自定义安装”功能。</p>
+<ul>
+<li><strong>Docker Image</strong>: <code>ghcr.io/open-webui/open-webui:main</code> (可考虑使用稳定版本标签如 <code>:0.8.5</code>)</li>
+<li><strong>容器端口 (Container Port)</strong>: <code>8080</code></li>
+<li><strong>Web UI端口 (Host Port)</strong>: 选择一个未被占用的新端口，例如 <code>11436</code>。</li>
+<li><strong>卷映射 (Volumes)</strong>:</li>
+<li><strong>主机 (Host)</strong>: <code>/DATA/AppData/open_webui</code> （用于持久化聊天数据、用户配置）</li>
+<li><strong>容器 (Container)</strong>: <code>/app/backend/data</code></li>
+<li><strong>环境变量 (Environment)</strong>：<strong>这是最关键的一步，必须正确配置。</strong></li>
+<li><strong>键 (Key)</strong>: <code>OLLAMA_BASE_URL</code></li>
+<li><strong>值 (Value)</strong>: 指向你正在运行的Ollama服务地址。有两种填写方式：<ol>
+<li><strong>使用宿主机IP</strong>: <code>http://192.168.31.213:11434</code> （请替换为你的实际IP）</li>
+<li><strong>使用Docker容器名（推荐，更稳定）</strong>: <code>http://musing_fredrik-main_app-1:11434</code></li>
+</ol>
+</li>
+<li><strong>重启策略 (Restart Policy)</strong>: 建议设置为 <code>always</code> 或 <code>unless-stopped</code>。</li>
+</ul>
+<h3 id="2_1">2. 部署后初始化与使用</h3>
+<ol>
+<li><strong>访问界面</strong>：安装完成后，在浏览器访问 <code>http://&lt;香橙派IP&gt;:11436</code>。</li>
+<li><strong>首次注册</strong>：首次打开会提示创建管理员账户，完成注册后登录。</li>
+<li><strong>连接模型后端</strong>：登录后，Open WebUI应能自动通过配置的 <code>OLLAMA_BASE_URL</code> 发现Ollama后端。你可以在设置中检查连接状态。</li>
+<li><strong>拉取与选择模型</strong>：在WebUI的模型管理页面，你可以直接拉取新模型（会调用后端Ollama的API），或直接选择已在Ollama中下载好的模型开始对话。</li>
+</ol>
+<h2 id="_6">常见故障与调试路径汇总</h2>
+<h3 id="1open-webui">问题1：部署后无法通过浏览器访问Open WebUI</h3>
+<ul>
+<li><strong>问题现象</strong>：应用显示为运行中，但无法打开Web页面。</li>
+<li><strong>原因分析</strong>：端口映射错误、容器启动失败、或健康检查未通过。</li>
+<li><strong>解决路径</strong>：</li>
+<li>
+<p><strong>确认端口与状态</strong>：</p>
+<p><code>bash
+ docker ps | grep open-webui</code></p>
+<p>确认状态为 <code>Up</code>，并查看正确的宿主机映射端口（如 <code>0.0.0.0:11436-&gt;8080/tcp</code>）。
+  2. <strong>检查容器日志</strong>：日志能直接反映启动失败原因。</p>
+<p><code>bash
+ docker logs --tail 100 &lt;open-webui容器名&gt;</code>
+  3. <strong>常见日志错误与解决</strong>：</p>
+<ul>
+<li><strong>无限循环打印初始化日志</strong>：通常因无法连接Ollama后端导致。重点检查 <code>OLLAMA_BASE_URL</code> 环境变量。</li>
+<li><strong>权限错误 (Permission denied)</strong>：数据卷目录权限不足。执行：
+   <code>bash
+   sudo chown -R 1000:1000 /DATA/AppData/open_webui</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2open-webui">问题2：Open WebUI中“选择模型”处为空，无法添加模型</h3>
+<ul>
+<li><strong>问题现象</strong>：WebUI界面可以打开，但模型列表为空，或无法连接到后端。</li>
+<li><strong>原因分析</strong>：Open WebUI未能成功与Ollama服务通信。</li>
+<li><strong>解决路径</strong>：</li>
+<li><strong>进入容器内部进行连接测试</strong>（最有效的诊断）：
+     <code>bash
+     docker exec -it &lt;open-webui容器名&gt; bash
+     # 在容器内执行：
+     echo $OLLAMA_BASE_URL  # 确认环境变量值
+     curl -v $OLLAMA_BASE_URL/api/tags  # 测试网络连通性</code></li>
+<li><strong>根据测试结果处理</strong>：<ul>
+<li><strong><code>echo</code> 输出为空</strong>：环境变量未设置。需在CasaOS中编辑应用，添加 <code>OLLAMA_BASE_URL</code>。</li>
+<li><strong><code>curl</code> 返回连接失败</strong>：网络不通。将 <code>OLLAMA_BASE_URL</code> 的值改为使用Ollama的<strong>容器名</strong>（如 <code>http://musing_fredrik-main_app-1:11434</code>），这通常在Docker网络内更可靠。</li>
+<li><strong><code>curl</code> 返回成功但模型列表为空</strong>：连接正常，但Ollama中未下载模型。需返回Ollama容器下载模型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-restarting">问题3：容器不断重启，状态为 <code>Restarting</code></h3>
+<ul>
+<li><strong>问题现象</strong>：在CasaOS中应用状态异常，容器日志显示启动后很快退出。</li>
+<li><strong>原因分析</strong>：启动命令执行完毕即退出，或遇到致命错误。</li>
+<li><strong>解决路径</strong>：</li>
+<li>检查日志，通常末尾会有错误信息。</li>
+<li><strong>指定启动命令</strong>：在CasaOS编辑页面，尝试在“命令”或“CMD”字段中填入 <code>bash start.sh</code>，强制容器运行启动脚本。</li>
+<li><strong>更换镜像版本</strong>：将 <code>:main</code> 标签换为具体的稳定版本，如 <code>:0.8.5</code>。</li>
+<li><strong>清理数据卷重新安装</strong>：有时旧数据会导致初始化失败。可以删除应用，并清空主机上的 <code>/DATA/AppData/open_webui</code> 目录，然后重新安装。</li>
+</ul>
+<h2 id="_7">最佳实践与最终建议</h2>
+<ol>
+<li><strong>部署顺序</strong>：务必先确保Ollama服务部署成功并能运行模型，再部署Open WebUI。</li>
+<li><strong>网络配置</strong>：在Docker Compose或CasaOS管理的环境下，<strong>使用容器名而非IP地址</strong>来配置服务间连接（如 <code>OLLAMA_BASE_URL</code>），这能避免因IP变动导致连接失败。</li>
+<li><strong>资源监控</strong>：持续在CasaOS系统状态页或通过 <code>htop</code> 命令监控内存使用情况。同时运行Ollama和Open WebUI对内存有一定要求。</li>
+<li><strong>模型管理</strong>：始终从超小型模型开始测试。模型的参数量（B）是影响内存占用的主要因素，而非单纯的磁盘大小。</li>
+<li><strong>数据持久化</strong>：务必为Ollama和Open WebUI正确配置卷映射，防止模型文件和聊天记录在容器更新或重建时丢失。</li>
+</ol>
+<p>通过遵循以上详细的步骤和调试指南，你应能在香橙派AI Pro上成功构建一个运行在校园网内的、私有的、带可视化界面的本地聊天机器人应用。</p>
+<p><a href="../2/">上一篇</a>
+<a href="../4/">下一篇</a></p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../2/" class="btn btn-neutral float-left"
+      title="香橙派AI Pro综合开发笔记 - 2"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../4/" class="btn btn-neutral float-right" title="香橙派AI Pro综合开发笔记 - 4">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../4/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
