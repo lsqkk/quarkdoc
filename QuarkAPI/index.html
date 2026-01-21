@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://lsqkk.github.io/quarkdoc/QuarkAPI/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Quark API - QuarkDoc</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Quark API";
+        var mkdocs_page_input_path = "QuarkAPI\\index.md";
+        var mkdocs_page_url = "/quarkdoc/QuarkAPI/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../OrangePi/">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OrangePi/1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OrangePi/2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OrangePi/3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OrangePi/4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QuarkAPI</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Quark API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#api">API文档</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">功能特性</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">技术栈</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">快速开始</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">环境要求</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">本地开发</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">项目结构</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">部署指南</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vercel">部署到 Vercel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">环境变量配置</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#apiquiz-api">API使用示例[以Quiz API为例]</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">获取题库列表</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">获取随机题目</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">搜索题目</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">获取特定题目</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_13">添加新的题库</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">开发指南</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#api_1">添加新的API模块</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_15">本地测试</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_16">贡献指南</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_17">许可证</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_18">支持与联系</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_19">致谢</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Quiz%20API/">题库测试 Quiz API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">QuarkAPI</li>
+      <li class="breadcrumb-item active">Quark API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="quark-api">Quark API</h1>
+<blockquote>
+<p>夸克博客个人 API 服务集合</p>
+</blockquote>
+<p>Quark API 是一个模块化、可扩展的个人 API 服务集合，当前核心功能为提供多主题百科题库服务。项目采用 Node.js 开发，部署于 Vercel 平台，支持通过 RESTful API 访问丰富的问答数据。</p>
+<h2 id="api">API文档</h2>
+<p><a href="https://lsqkk.github.io/quarkdoc/QuarkAPI">夸克API Quark API</a></p>
+<h2 id="_1">功能特性</h2>
+<ul>
+<li><strong>多主题题库</strong>: 提供计算机历史、科技公司 trivia 等多种主题的题库</li>
+<li><strong>灵活的查询方式</strong>: 支持随机抽取、ID查询、范围查询和全文搜索</li>
+<li><strong>标准化响应</strong>: 统一的JSON响应格式和错误处理机制</li>
+<li><strong>高性能设计</strong>: 内置缓存机制，响应快速</li>
+<li><strong>跨域支持</strong>: 完善的CORS配置，支持前端应用直接调用</li>
+<li><strong>易于扩展</strong>: 模块化架构，便于添加新的API服务</li>
+</ul>
+<h2 id="_2">技术栈</h2>
+<ul>
+<li><strong>运行时</strong>: Node.js 14+</li>
+<li><strong>部署平台</strong>: Vercel</li>
+<li><strong>数据格式</strong>: JSON</li>
+<li><strong>API风格</strong>: RESTful</li>
+</ul>
+<h2 id="_3">快速开始</h2>
+<h3 id="_4">环境要求</h3>
+<ol>
+<li>Node.js 14.0 或更高版本</li>
+<li>Git</li>
+<li>Vercel 账户（用于部署）</li>
+</ol>
+<h3 id="_5">本地开发</h3>
+<ol>
+<li>克隆仓库</li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/lsqkk/quark-api.git
+cd quark-api
+</code></pre>
+<ol>
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-bash">npm install
+</code></pre>
+<ol>
+<li>启动本地开发服务器</li>
+</ol>
+<pre><code class="language-bash">npm start
+</code></pre>
+<ol>
+<li>访问本地服务</li>
+<li>API根路径: http://localhost:3000/api</li>
+<li>健康检查: http://localhost:3000/api/health</li>
+</ol>
+<h3 id="_6">项目结构</h3>
+<pre><code>quark-api/
+├── api/                    # API路由处理函数
+│   ├── quiz/              # 题库相关端点
+│   │   ├── index.js       # GET /api/quiz - 题库列表
+│   │   ├── random.js      # GET /api/quiz/random - 随机题目
+│   │   ├── search.js      # GET /api/quiz/search - 搜索题目
+│   │   ├── [id].js        # GET /api/quiz/[id] - 按ID查询
+│   │   └── range.js       # GET /api/quiz/range - 范围查询
+│   ├── index.js           # GET /api - API信息
+│   └── health.js          # GET /api/health - 健康检查
+├── data/                  # 题库数据存储
+│   ├── quizzes/           # 题库JSON文件
+│   │   ├── ibm-trivia.json
+│   │   ├── computer-history.json
+│   │   └── ...
+│   └── index/             # 题库索引文件
+│       └── ti_index.json  # 自动生成的索引
+├── lib/                   # 核心工具库
+│   └── quiz-manager.js    # 题库管理核心逻辑
+├── public/                # 静态资源
+│   └── docs/              # API文档
+│       └── index.html     # 文档页面
+├── vercel.json            # Vercel部署配置
+├── package.json           # 项目依赖配置
+└── README.md              # 项目说明文档
+</code></pre>
+<h2 id="_7">部署指南</h2>
+<h3 id="vercel">部署到 Vercel</h3>
+<ol>
+<li>
+<p>推送代码到GitHub仓库</p>
+</li>
+<li>
+<p>在Vercel控制台导入项目</p>
+</li>
+<li>登录 <a href="https://vercel.com">Vercel</a></li>
+<li>点击"New Project"</li>
+<li>导入你的GitHub仓库 <code>quark-api</code></li>
+<li>
+<p>使用默认配置即可</p>
+</li>
+<li>
+<p>配置自定义域名（可选）</p>
+</li>
+<li>在项目设置中添加自定义域名</li>
+<li>
+<p>按照提示配置 DNS 记录</p>
+</li>
+<li>
+<p>自动部署</p>
+</li>
+<li>每次推送到 <code>main</code> 分支会自动触发部署</li>
+<li>部署状态可在Vercel控制台查看</li>
+</ol>
+<h3 id="_8">环境变量配置</h3>
+<p>如需配置环境变量，在Vercel项目设置中添加：</p>
+<ul>
+<li><code>NODE_ENV</code>: 运行环境 (<code>production</code>/<code>development</code>)</li>
+<li><code>DATA_PATH</code>: 数据目录路径（通常不需要修改）</li>
+</ul>
+<h2 id="apiquiz-api">API使用示例[以Quiz API为例]</h2>
+<h3 id="_9">获取题库列表</h3>
+<pre><code class="language-bash">curl https://quark-api.lsqkk.space/api/quiz
+</code></pre>
+<h3 id="_10">获取随机题目</h3>
+<pre><code class="language-bash">curl &quot;https://quark-api.lsqkk.space/api/quiz/random?count=3&amp;source=computer-history&quot;
+</code></pre>
+<h3 id="_11">搜索题目</h3>
+<pre><code class="language-bash">curl &quot;https://quark-api.lsqkk.space/api/quiz/search?q=IBM&amp;limit=5&quot;
+</code></pre>
+<h3 id="_12">获取特定题目</h3>
+<pre><code class="language-bash">curl https://quark-api.lsqkk.space/api/quiz/ibm-trivia-15
+</code></pre>
+<h2 id="_13">添加新的题库</h2>
+<ol>
+<li>准备题库JSON文件，格式如下：</li>
+</ol>
+<pre><code class="language-json">{
+  &quot;quiz_title&quot;: &quot;你的题库标题&quot;,
+  &quot;description&quot;: &quot;题库描述&quot;,
+  &quot;total_questions&quot;: 50,
+  &quot;questions_per_quiz&quot;: 10,
+  &quot;questions&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;question&quot;: &quot;问题内容&quot;,
+      &quot;options&quot;: [
+        {&quot;letter&quot;: &quot;A&quot;, &quot;text&quot;: &quot;选项A&quot;, &quot;is_correct&quot;: false},
+        {&quot;letter&quot;: &quot;B&quot;, &quot;text&quot;: &quot;选项B&quot;, &quot;is_correct&quot;: true}
+      ],
+      &quot;correct_answer&quot;: &quot;B&quot;
+    }
+  ]
+}
+</code></pre>
+<ol>
+<li>
+<p>将文件放入 <code>data/quizzes/</code> 目录，并更新索引<code>ti_index.json</code></p>
+</li>
+<li>
+<p>推送更改到 GitHub ，部署后自动生效</p>
+</li>
+</ol>
+<h2 id="_14">开发指南</h2>
+<h3 id="api_1">添加新的API模块</h3>
+<ol>
+<li>在 <code>api/</code> 目录下创建新的端点文件</li>
+<li>遵循现有模式导出请求处理函数</li>
+<li>在 <code>vercel.json</code> 中配置路由（如有需要）</li>
+<li>更新根API端点 (<code>/api</code>) 的文档信息</li>
+</ol>
+<h3 id="_15">本地测试</h3>
+<p>项目包含本地开发服务器，模拟Vercel环境：</p>
+<pre><code class="language-bash"># 启动开发服务器
+npm start
+
+# 直接测试API端点
+curl http://localhost:3000/api/quiz
+</code></pre>
+<h3 id="_16">贡献指南</h3>
+<ol>
+<li>Fork 本项目</li>
+<li>创建功能分支 (<code>git checkout -b feature/amazing-feature</code>)</li>
+<li>提交更改 (<code>git commit -m 'Add some amazing feature'</code>)</li>
+<li>推送到分支 (<code>git push origin feature/amazing-feature</code>)</li>
+<li>创建 Pull Request</li>
+</ol>
+<h3 id="_17">许可证</h3>
+<p>本项目采用 MIT 许可证。详见 <a href="LICENSE">LICENSE</a> 文件。</p>
+<h3 id="_18">支持与联系</h3>
+<p>如有问题或建议，请通过以下方式联系：</p>
+<ul>
+<li>GitHub Issues: <a href="https://github.com/lsqkk/quark-api/issues">项目Issues页面</a></li>
+</ul>
+<h3 id="_19">致谢</h3>
+<p>感谢 Vercel 提供的无服务器部署支持。</p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../OrangePi/4/" class="btn btn-neutral float-left"
+      title="香橙派AI Pro综合开发笔记 - 4"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="Quiz%20API/" class="btn btn-neutral float-right" title="题库测试 Quiz API">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../OrangePi/4/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="Quiz%20API/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
