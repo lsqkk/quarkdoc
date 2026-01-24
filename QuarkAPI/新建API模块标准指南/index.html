@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://lsqkk.github.io/quarkdoc/QuarkAPI/%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>新建API模块标准指南 - Quark API - QuarkDoc</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u65b0\u5efaAPI\u6a21\u5757\u6807\u51c6\u6307\u5357 - Quark API";
+        var mkdocs_page_input_path = "QuarkAPI\\\u65b0\u5efaAPI\u6a21\u5757\u6807\u51c6\u6307\u5357.md";
+        var mkdocs_page_url = "/quarkdoc/QuarkAPI/%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QuarkAPI</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Quark API - 夸克博客个人 API 服务集合</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Animal%20API/">Animal API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Quiz%20API/">题库测试 Quiz API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">新建API模块标准指南 - Quark API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概述</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">核心原则</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">项目结构标准</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api">新建API模块完整流程</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">步骤1：确定模块需求</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-lib">步骤2：创建管理器模块 (lib/)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3api-apimoduleindexjs">步骤3：创建聚合API入口 (api/{module}/index.js)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4api-apiindexjs">步骤4：更新主API入口 (api/index.js)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-verceljson">步骤5：更新配置部署 (vercel.json)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-api-apimodulereadmemd">步骤6：创建 API 文档 (api/{module}/README.md)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">关键注意事项</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1_1">1. 路由设计最佳实践</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">2. 参数处理规范</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">3. 响应格式标准</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4">4. 错误处理标准</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5">5. 性能优化要点</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">常见问题解决</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#q1-404">Q1: 路由返回404</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#q2-vercel">Q2: Vercel函数数量超限</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#q3-cors">Q3: CORS问题</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#q4">Q4: 环境变量使用</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">测试清单</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">快速启动模板</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">QuarkAPI</li>
+      <li class="breadcrumb-item active">新建API模块标准指南 - Quark API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-quark-api">新建API模块标准指南 -  Quark API</h1>
+<h2 id="_1">概述</h2>
+<p>本文档提供在现有 Quark API 项目中新建 API 服务的标准化流程和最佳实践。适用于项目维护者或 AI 助手参考，确保新模块的一致性、可维护性和部署友好性。</p>
+<h2 id="_2">核心原则</h2>
+<ol>
+<li><strong>单一函数原则</strong>：每个 API 模块应尽量聚合到单个 Serverless Function 中</li>
+<li><strong>配置驱动</strong>：路由和功能通过统一配置管理</li>
+<li><strong>一致性</strong>：保持与现有 API 相同的响应格式和错误处理</li>
+<li><strong>资源优化</strong>：必须考虑 Vercel 免费计划限制（12个函数，已用4个）</li>
+</ol>
+<h2 id="_3">项目结构标准</h2>
+<pre><code>quark-api/
+├── api/                    # API 路由入口
+│   ├── {module-name}/     # 新模块目录
+│   │   └── index.js       # 聚合入口（唯一必需文件）
+│   ├── index.js           # 主API入口（需更新）
+│   └── health.js          # 健康检查（保持不变）
+├── lib/                   # 业务逻辑
+│   └── {module}-manager.js # 新模块管理器
+├── data/                  # 数据文件（可选）
+│   └── {module}/         # 模块专属数据
+├── public/               # 静态资源及 API 文档
+└── vercel.json           # 部署配置
+</code></pre>
+<h2 id="api">新建API模块完整流程</h2>
+<h3 id="1">步骤1：确定模块需求</h3>
+<ul>
+<li>明确API功能范围和数据源</li>
+<li>设计端点结构和参数</li>
+<li>预估数据量和访问频率</li>
+</ul>
+<h3 id="2-lib">步骤2：创建管理器模块 (lib/)</h3>
+<pre><code class="language-javascript">// lib/{module}-manager.js 模板
+class ModuleManager {
+    constructor() {
+        // 初始化配置、缓存等
+        this.cache = new Map();
+        this.cacheTTL = 5 * 60 * 1000; // 5分钟缓存
+    }
+
+    // 核心数据获取方法
+    async getData(id, options = {}) {
+        // 实现业务逻辑
+    }
+
+    // 数据验证和清理
+    sanitizeData(data, options = {}) {
+        // 数据清理逻辑
+    }
+
+    // 缓存管理
+    async getWithCache(key, fetchFunction) {
+        const cached = this.cache.get(key);
+        if (cached &amp;&amp; (Date.now() - cached.timestamp) &lt; this.cacheTTL) {
+            return cached.data;
+        }
+
+        const data = await fetchFunction();
+        this.cache.set(key, { data, timestamp: Date.now() });
+        return data;
+    }
+}
+
+module.exports = new ModuleManager();
+</code></pre>
+<h3 id="3api-apimoduleindexjs">步骤3：创建聚合API入口 (api/{module}/index.js)</h3>
+<pre><code class="language-javascript">// api/{module-name}/index.js 模板
+const moduleManager = require('../../lib/{module}-manager');
+
+module.exports = async function handler(req, res) {
+    // 1. 基础响应头设置
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+
+    // 2. 处理预检请求
+    if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        return res.status(200).end();
+    }
+
+    // 3. 方法限制
+    if (req.method !== 'GET') {
+        res.setHeader('Content-Type', 'application/json');
+        return res.status(405).json({
+            success: false,
+            error: 'Method Not Allowed'
+        });
+    }
+
+    // 4. 解析URL路径
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const pathSegments = url.pathname.split('/').filter(Boolean);
+    const endpointIndex = pathSegments.indexOf('{module-name}') + 1;
+    const endpoint = endpointIndex &lt; pathSegments.length ? pathSegments[endpointIndex] : '';
+
+    try {
+        // 5. 路由分发
+        switch (endpoint) {
+            case 'random':
+                await handleRandom(req, res, url.searchParams);
+                break;
+            case 'search':
+                await handleSearch(req, res, url.searchParams);
+                break;
+            // 添加更多端点...
+            default:
+                // 检查是否是ID格式或使用主入口
+                if (endpoint &amp;&amp; /^{id-pattern}$/.test(endpoint)) {
+                    await handleById(req, res, endpoint, url.searchParams);
+                } else {
+                    await handleMain(req, res, url.searchParams);
+                }
+        }
+    } catch (error) {
+        // 6. 统一错误处理
+        handleError(res, error);
+    }
+};
+
+// 7. 各端点处理函数
+async function handleMain(req, res, params) {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+
+    try {
+        const data = await moduleManager.getMainData();
+
+        res.status(200).json({
+            success: true,
+            api: {
+                name: &quot;{API名称}&quot;,
+                version: &quot;1.0.0&quot;,
+                base_url: `https://quark-api.lsqkk.space/api/{module-name}`
+            },
+            data: data,
+            endpoints: {
+                // 列出所有可用端点
+            },
+            meta: {
+                timestamp: new Date().toISOString()
+            }
+        });
+    } catch (error) {
+        handleError(res, error);
+    }
+}
+
+// 8. 错误处理函数
+function handleError(res, error) {
+    console.error('API Error:', error);
+
+    res.setHeader('Content-Type', 'application/json');
+
+    const statusCode = error.message.includes('not found') ? 404 : 
+                      error.message.includes('Invalid') ? 400 : 500;
+
+    res.status(statusCode).json({
+        success: false,
+        error: error.message,
+        meta: { timestamp: new Date().toISOString() }
+    });
+}
+</code></pre>
+<h3 id="4api-apiindexjs">步骤4：更新主API入口 (api/index.js)</h3>
+<pre><code class="language-javascript">// 在原有 endpoints 对象中添加新模块
+const response = {
+    // ... 原有内容
+    endpoints: {
+        // ... 原有端点
+        &quot;{module-name}&quot;: {
+            base: &quot;/api/{module-name}&quot;,
+            description: &quot;{模块描述}&quot;,
+            endpoints: {
+                list: &quot;GET /api/{module-name}&quot;,
+                random: &quot;GET /api/{module-name}/random&quot;,
+                // 其他端点...
+            }
+        }
+    }
+};
+</code></pre>
+<h3 id="5-verceljson">步骤5：更新配置部署 (vercel.json)</h3>
+<p>应当在<code>"rewrites"</code>中添加：</p>
+<pre><code class="language-json">        {
+            &quot;source&quot;: &quot;/api/{module-name}/:path*&quot;,
+            &quot;destination&quot;: &quot;/api/{module-name}&quot;
+        }
+</code></pre>
+<h3 id="6-api-apimodulereadmemd">步骤6：创建 API 文档 (api/{module}/README.md)</h3>
+<pre><code class="language-md"># 模块中文名 {module} API - Quark API 文档
+## 按照标准 API 文档配置撰写
+</code></pre>
+<p>并应当复制到<code>quarkdoc</code>项目中<code>/docs/QuarkAPI/{module-name} API.md</code></p>
+<h2 id="_4">关键注意事项</h2>
+<h3 id="1_1">1. 路由设计最佳实践</h3>
+<ul>
+<li><strong>扁平化结构</strong>：尽量使用查询参数而非深层路径</li>
+<li><strong>语义化端点</strong>：<code>/api/module/action</code> 而非 <code>/api/module/doSomething</code></li>
+<li><strong>ID格式统一</strong>：使用 <code>{resource}-{id}</code> 格式，如 <code>item-42</code></li>
+</ul>
+<h3 id="2">2. 参数处理规范</h3>
+<pre><code class="language-javascript">// 参数解析示例
+function parseParams(params) {
+    return {
+        id: params.get('id'),
+        limit: Math.min(parseInt(params.get('limit')) || 10, 50),
+        page: Math.max(parseInt(params.get('page')) || 1, 1),
+        // 布尔值参数
+        includeDetails: params.get('include_details') === 'true'
+    };
+}
+</code></pre>
+<h3 id="3">3. 响应格式标准</h3>
+<pre><code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: { /* 核心数据 */ },
+    &quot;meta&quot;: {
+        &quot;timestamp&quot;: &quot;ISO时间戳&quot;,
+        &quot;request_id&quot;: &quot;唯一请求ID&quot;,
+        &quot;pagination&quot;: { /* 分页信息 */ }
+    }
+}
+</code></pre>
+<h3 id="4">4. 错误处理标准</h3>
+<ul>
+<li><strong>400</strong>：参数错误</li>
+<li><strong>404</strong>：资源不存在</li>
+<li><strong>429</strong>：请求过多（如需限流）</li>
+<li><strong>500</strong>：服务器内部错误</li>
+</ul>
+<h3 id="5">5. 性能优化要点</h3>
+<ul>
+<li><strong>缓存策略</strong>：适当使用内存缓存减少重复计算</li>
+<li><strong>分页支持</strong>：大数据集必须支持分页</li>
+<li><strong>CDN集成</strong>：静态资源使用CDN加速</li>
+<li><strong>压缩响应</strong>：Vercel自动处理</li>
+</ul>
+<h2 id="_5">常见问题解决</h2>
+<h3 id="q1-404">Q1: 路由返回404</h3>
+<ol>
+<li>检查 <code>vercel.json</code> 的 <code>rewrites</code> 配置</li>
+<li>确认文件路径和命名正确</li>
+<li>查看部署日志确认函数构建成功</li>
+</ol>
+<h3 id="q2-vercel">Q2: Vercel函数数量超限</h3>
+<ol>
+<li>聚合相关功能到单个文件中</li>
+<li>删除未使用的函数文件</li>
+<li>使用 <code>vercel ls</code> 查看当前函数数量</li>
+</ol>
+<h3 id="q3-cors">Q3: CORS问题</h3>
+<ol>
+<li>确保响应头包含 <code>Access-Control-Allow-Origin: *</code></li>
+<li>正确处理 OPTIONS 预检请求</li>
+<li>检查 <code>vercel.json</code> 中的 headers 配置</li>
+</ol>
+<h3 id="q4">Q4: 环境变量使用</h3>
+<pre><code class="language-javascript">// 在Vercel项目设置中配置环境变量
+const apiKey = process.env.API_KEY;
+const isProd = process.env.NODE_ENV === 'production';
+</code></pre>
+<h2 id="_6">测试清单</h2>
+<ul>
+<li>[ ] 本地运行 <code>npm start</code> 测试基本功能</li>
+<li>[ ] 测试所有端点的成功和错误情况</li>
+<li>[ ] 验证响应格式符合标准</li>
+<li>[ ] 检查CORS头正确设置</li>
+<li>[ ] 确认缓存头合理设置</li>
+<li>[ ] 部署到Vercel测试环境</li>
+<li>[ ] 更新主API入口的文档</li>
+<li>[ ] 创建独立的API文档页面</li>
+</ul>
+<h2 id="_7">快速启动模板</h2>
+<p>可在项目根目录创建 <code>templates/</code> 目录，存放以下模板文件：</p>
+<ol>
+<li><code>module-manager-template.js</code> - 管理器模板</li>
+<li><code>api-index-template.js</code> - API入口模板</li>
+<li><code>docs-template.html</code> - 文档模板</li>
+</ol>
+<p>使用时复制模板并替换 <code>{placeholders}</code> 即可快速创建新模块。</p>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../Quiz%20API/" class="btn btn-neutral float-left"
+      title="题库测试 Quiz API"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" class="btn btn-neutral float-right" title="XJTU自动化25级C程序设计期末考试">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Quiz%20API/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

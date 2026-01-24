@@ -128,6 +128,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Quiz%20API/">题库测试 Quiz API</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/">新建API模块标准指南 - Quark API</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">资料</span></p>
               <ul>
@@ -234,25 +236,18 @@ cd quark-api
 <pre><code>quark-api/
 ├── api/                    # API路由处理函数
 │   ├── quiz/              # 题库相关端点
-│   │   ├── index.js       # GET /api/quiz - 题库列表
-│   │   ├── random.js      # GET /api/quiz/random - 随机题目
-│   │   ├── search.js      # GET /api/quiz/search - 搜索题目
-│   │   ├── [id].js        # GET /api/quiz/[id] - 按ID查询
-│   │   └── range.js       # GET /api/quiz/range - 范围查询
+│   ├── animal/            # 动物图片相关端点
+│   ├── ...                # 更多 API 端点
 │   ├── index.js           # GET /api - API信息
 │   └── health.js          # GET /api/health - 健康检查
 ├── data/                  # 题库数据存储
-│   ├── quizzes/           # 题库JSON文件
-│   │   ├── ibm-trivia.json
-│   │   ├── computer-history.json
+│   ├── quizzes/           # 题库 JSON 文件
+│   │   ├── computer.json
 │   │   └── ...
 │   └── index/             # 题库索引文件
 │       └── ti_index.json  # 自动生成的索引
 ├── lib/                   # 核心工具库
-│   └── quiz-manager.js    # 题库管理核心逻辑
 ├── public/                # 静态资源
-│   └── docs/              # API文档
-│       └── index.html     # 文档页面
 ├── vercel.json            # Vercel部署配置
 ├── package.json           # 项目依赖配置
 └── README.md              # 项目说明文档
