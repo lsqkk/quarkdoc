@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://lsqkk.github.io/quarkdoc/QuarkAPI/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Quark API - QuarkDoc</title>
+    <title>Quark API - 夸克博客个人 API 服务集合 - QuarkDoc</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Quark API";
+        var mkdocs_page_name = "Quark API - \u5938\u514b\u535a\u5ba2\u4e2a\u4eba API \u670d\u52a1\u96c6\u5408";
         var mkdocs_page_input_path = "QuarkAPI\\index.md";
         var mkdocs_page_url = "/quarkdoc/QuarkAPI/";
       </script>
@@ -64,9 +64,11 @@
               </ul>
               <p class="caption"><span class="caption-text">QuarkAPI</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Quark API</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Quark API - 夸克博客个人 API 服务集合</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#api">API文档</a>
+    <li class="toctree-l2"><a class="reference internal" href="#api">API 仓库地址</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api_1">API 列表</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_1">功能特性</a>
     </li>
@@ -106,7 +108,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_14">开发指南</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#api_1">添加新的API模块</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_2">添加新的API模块</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#_15">本地测试</a>
     </li>
@@ -121,6 +123,8 @@
         </ul>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Animal%20API/">Animal API</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Quiz%20API/">题库测试 Quiz API</a>
                   </li>
@@ -147,7 +151,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">QuarkAPI</li>
-      <li class="breadcrumb-item active">Quark API</li>
+      <li class="breadcrumb-item active">Quark API - 夸克博客个人 API 服务集合</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -156,16 +160,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="quark-api">Quark API</h1>
-<blockquote>
-<p>夸克博客个人 API 服务集合</p>
-</blockquote>
-<p>Quark API 是一个模块化、可扩展的个人 API 服务集合，当前核心功能为提供多主题百科题库服务。项目采用 Node.js 开发，部署于 Vercel 平台，支持通过 RESTful API 访问丰富的问答数据。</p>
-<h2 id="api">API文档</h2>
-<p><a href="https://lsqkk.github.io/quarkdoc/QuarkAPI">夸克API Quark API</a></p>
+                <h1 id="quark-api-api">Quark API - 夸克博客个人 API 服务集合</h1>
+<p>Quark API 是一个模块化、可扩展的个人 API 服务集合，提供多种 API 服务。项目采用 Node.js 开发，部署于 Vercel 平台，支持通过 RESTful API 访问丰富的问答数据。</p>
+<h2 id="api">API 仓库地址</h2>
+<p><a href="https://github.com/lsqkk/quark-api">Quark API - Github</a></p>
+<h2 id="api_1">API 列表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">API 名称</th>
+<th style="text-align: left;">简介</th>
+<th style="text-align: left;">API 文档地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Quiz API</strong></td>
+<td style="text-align: left;">提供多主题百科题库服务，支持随机题目、ID查询、范围查询和全文搜索等功能。</td>
+<td style="text-align: left;"><a href="https://lsqkk.github.io/quarkdoc/QuarkAPI/Quiz%20API/">https://lsqkk.github.io/quarkdoc/QuarkAPI/Quiz%20API/</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Animal API</strong></td>
+<td style="text-align: left;">提供结构化动物图片数据集的访问服务，可按类别、ID获取图片，支持随机、范围查询和搜索，并包含 GitHub 原图与 CDN 加速双链接。</td>
+<td style="text-align: left;"><a href="https://lsqkk.github.io/quarkdoc/QuarkAPI/Animal%20API/">https://lsqkk.github.io/quarkdoc/QuarkAPI/Animal%20API/</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="_1">功能特性</h2>
 <ul>
-<li><strong>多主题题库</strong>: 提供计算机历史、科技公司 trivia 等多种主题的题库</li>
 <li><strong>灵活的查询方式</strong>: 支持随机抽取、ID查询、范围查询和全文搜索</li>
 <li><strong>标准化响应</strong>: 统一的JSON响应格式和错误处理机制</li>
 <li><strong>高性能设计</strong>: 内置缓存机制，响应快速</li>
@@ -313,7 +335,7 @@ cd quark-api
 </li>
 </ol>
 <h2 id="_14">开发指南</h2>
-<h3 id="api_1">添加新的API模块</h3>
+<h3 id="api_2">添加新的API模块</h3>
 <ol>
 <li>在 <code>api/</code> 目录下创建新的端点文件</li>
 <li>遵循现有模式导出请求处理函数</li>
@@ -351,7 +373,7 @@ curl http://localhost:3000/api/quiz
   <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
     <a href="../OrangePi/4/" class="btn btn-neutral float-left"
       title="香橙派AI Pro综合开发笔记 - 4"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
-    <a href="Quiz%20API/" class="btn btn-neutral float-right" title="题库测试 Quiz API">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+    <a href="Animal%20API/" class="btn btn-neutral float-right" title="Animal API">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
   </div>
 
   <hr />
@@ -382,7 +404,7 @@ curl http://localhost:3000/api/quiz
       <span><a href="../OrangePi/4/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="Quiz%20API/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="Animal%20API/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
