@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://lsqkk.github.io/quarkdoc/QuarkAPI/bili-card/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Bili Card API - QuarkDoc</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Bili Card API";
+        var mkdocs_page_input_path = "QuarkAPI\\bili-card.md";
+        var mkdocs_page_url = "/quarkdoc/QuarkAPI/bili-card/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/onlyq_white.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">QuarkDoc 文档中心</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">关于本站</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OrangePi</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/">香橙派AI Pro 综合开发笔记：从零搭建个人AI服务器</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/1/">香橙派AI Pro综合开发笔记 - 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/2/">香橙派AI Pro综合开发笔记 - 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/3/">香橙派AI Pro综合开发笔记 - 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../OrangePi/4/">香橙派AI Pro综合开发笔记 - 4</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QuarkAPI</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Quark API - 夸克博客个人 API 服务集合</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Animal%20API/">Animal API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Quiz%20API/">题库测试 Quiz API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Bili Card API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概述</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">统一响应结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#svg">成功响应（SVG 卡片接口）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json">成功响应（JSON 接口）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">错误响应</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">认证与速率限制</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">核心概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">端点索引</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">端点详情</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-bilibili">1. 生成 Bilibili 用户卡片</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">2. 查询主题与配色信息</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#21">2.1 列出所有可用资源</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22">2.2 预览特定主题+配色组合</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#23">2.3 获取主题或配色详细信息</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">错误代码参考</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">客户端使用示例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#javascript">JavaScript</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#python">Python</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#github-readme">在 GitHub README 中使用</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">最佳实践</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/">新建API模块标准指南 - Quark API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">资料</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU自动化25级C程序设计期末考试</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E8%B5%84%E6%96%99/XJTU%E8%AE%A1%E7%AE%97%E6%9C%BA25%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">XJTU计算机25级C程序设计期末考试</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QuarkDoc</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">QuarkAPI</li>
+      <li class="breadcrumb-item active">Bili Card API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bili-card-api">Bili Card API</h1>
+<h2 id="_1">概述</h2>
+<p>Bili Card 提供简洁的 API 接口，用于生成美观的 Bilibili 用户信息展示卡片。所有接口均返回 SVG 格式图像，支持多种主题与配色方案。</p>
+<h2 id="_2">统一响应结构</h2>
+<h3 id="svg">成功响应（SVG 卡片接口）</h3>
+<ul>
+<li><strong>Content-Type</strong>: <code>image/svg+xml</code></li>
+<li><strong>Cache-Control</strong>: <code>public, max-age=3600</code></li>
+<li><strong>Body</strong>: SVG 图像内容</li>
+</ul>
+<h3 id="json">成功响应（JSON 接口）</h3>
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;data&quot;: {}
+}
+</code></pre>
+<h3 id="_3">错误响应</h3>
+<pre><code class="language-json">{
+  &quot;code&quot;: 错误代码,
+  &quot;message&quot;: &quot;错误描述&quot;,
+  &quot;data&quot;: null
+}
+</code></pre>
+<h2 id="_4">认证与速率限制</h2>
+<ul>
+<li>目前所有接口无需认证，公开访问</li>
+<li>默认速率限制：每个 IP 100 次/分钟</li>
+<li>超过限制将返回 <code>429 Too Many Requests</code></li>
+</ul>
+<h2 id="_5">核心概念</h2>
+<ul>
+<li><strong>UID</strong>: Bilibili 用户唯一标识符</li>
+<li><strong>主题 (Theme)</strong>: 定义卡片布局与样式（如 default, modern, btv, simple）</li>
+<li><strong>配色 (Color)</strong>: 定义卡片色彩方案（如 blue, pink, green, purple, dark）</li>
+</ul>
+<h2 id="_6">端点索引</h2>
+<table>
+<thead>
+<tr>
+<th>端点</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/card</code></td>
+<td>GET</td>
+<td>生成 Bilibili 用户卡片</td>
+</tr>
+<tr>
+<td><code>/api/</code></td>
+<td>GET</td>
+<td>查询主题与配色信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">端点详情</h2>
+<h3 id="1-bilibili">1. 生成 Bilibili 用户卡片</h3>
+<p><strong>端点</strong>: <code>GET /api/card</code></p>
+<p><strong>描述</strong>: 根据 UID 生成用户信息 SVG 卡片</p>
+<p><strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uid</code></td>
+<td>string</td>
+<td>是</td>
+<td>-</td>
+<td>B站用户 UID</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td>string</td>
+<td>否</td>
+<td><code>default</code></td>
+<td>主题样式</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>string</td>
+<td>否</td>
+<td><code>blue</code></td>
+<td>配色方案</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例请求</strong>:</p>
+<pre><code class="language-bash">curl &quot;https://bili-card.lsqkk.space/api/card?uid=2105459088&amp;theme=modern&amp;color=green&quot;
+</code></pre>
+<p><strong>响应</strong>:
+- 成功: SVG 图像内容
+- 失败: JSON 错误响应</p>
+<h3 id="2">2. 查询主题与配色信息</h3>
+<p><strong>端点</strong>: <code>GET /api/</code></p>
+<p><strong>描述</strong>: 查询可用主题、配色信息或预览效果</p>
+<p><strong>参数</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td>string</td>
+<td>否</td>
+<td><code>list</code></td>
+<td>操作类型: <code>list</code>, <code>preview</code>, <code>details</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>否</td>
+<td>-</td>
+<td>类型: <code>themes</code>, <code>colors</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>否</td>
+<td>-</td>
+<td>项目 ID（用于 <code>details</code> 操作）</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td>string</td>
+<td>否</td>
+<td>-</td>
+<td>主题名称（用于 <code>preview</code> 操作）</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>string</td>
+<td>否</td>
+<td>-</td>
+<td>配色名称（用于 <code>preview</code> 操作）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>操作示例</strong>:</p>
+<h4 id="21">2.1 列出所有可用资源</h4>
+<pre><code>GET /api/?action=list
+</code></pre>
+<p>响应示例:</p>
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;data&quot;: {
+    &quot;themes&quot;: [&quot;default&quot;, &quot;modern&quot;, &quot;btv&quot;, &quot;simple&quot;],
+    &quot;colors&quot;: [&quot;blue&quot;, &quot;pink&quot;, &quot;green&quot;, &quot;purple&quot;, &quot;dark&quot;]
+  }
+}
+</code></pre>
+<h4 id="22">2.2 预览特定主题+配色组合</h4>
+<pre><code>GET /api/?action=preview&amp;theme=default&amp;color=blue
+</code></pre>
+<p>响应: SVG 预览图像</p>
+<h4 id="23">2.3 获取主题或配色详细信息</h4>
+<pre><code>GET /api/?action=details&amp;id=default
+</code></pre>
+<p>响应示例:</p>
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;默认主题&quot;,
+    &quot;description&quot;: &quot;经典的B站风格卡片设计&quot;,
+    &quot;features&quot;: [&quot;标准布局&quot;, &quot;包含头像、昵称、签名&quot;, &quot;显示粉丝、获赞、最新视频&quot;]
+  }
+}
+</code></pre>
+<h2 id="_8">错误代码参考</h2>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>描述</th>
+<th>解决建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td>参数错误</td>
+<td>检查 UID 格式是否正确</td>
+</tr>
+<tr>
+<td>404</td>
+<td>用户不存在</td>
+<td>确认 UID 对应的用户存在</td>
+</tr>
+<tr>
+<td>429</td>
+<td>请求过多</td>
+<td>降低请求频率</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器错误</td>
+<td>稍后重试或提交 Issue</td>
+</tr>
+<tr>
+<td>503</td>
+<td>服务暂不可用</td>
+<td>B站 API 限流或维护中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">客户端使用示例</h2>
+<h3 id="javascript">JavaScript</h3>
+<pre><code class="language-javascript">// 生成卡片 URL
+function generateCardUrl(uid, theme = 'default', color = 'blue') {
+  return `https://bili-card.lsqkk.space/api/card?uid=${uid}&amp;theme=${theme}&amp;color=${color}`;
+}
+
+// 在网页中嵌入卡片
+const cardUrl = generateCardUrl('2105459088', 'modern', 'green');
+document.getElementById('bili-card').innerHTML = 
+  `&lt;img src=&quot;${cardUrl}&quot; alt=&quot;Bilibili卡片&quot; width=&quot;540&quot; height=&quot;220&quot;&gt;`;
+</code></pre>
+<h3 id="python">Python</h3>
+<pre><code class="language-python">import requests
+
+def get_bili_card(uid, theme='default', color='blue'):
+    url = f&quot;https://bili-card.lsqkk.space/api/card?uid={uid}&amp;theme={theme}&amp;color={color}&quot;
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open('bili_card.svg', 'wb') as f:
+            f.write(response.content)
+        print(&quot;卡片已保存为 bili_card.svg&quot;)
+    else:
+        print(f&quot;请求失败: {response.status_code}&quot;)
+</code></pre>
+<h3 id="github-readme">在 GitHub README 中使用</h3>
+<pre><code class="language-markdown">![我的B站卡片](https://bili-card.lsqkk.space/api/card?uid=你的UID&amp;theme=simple&amp;color=blue)
+</code></pre>
+<h2 id="_10">最佳实践</h2>
+<ol>
+<li><strong>缓存卡片</strong>: 建议在客户端缓存生成的 SVG，减少 API 调用</li>
+<li><strong>错误处理</strong>: 始终添加备用方案，当卡片生成失败时显示默认图像</li>
+<li><strong>尺寸控制</strong>: 根据使用场景调整卡片显示尺寸</li>
+<li><strong>性能优化</strong>: 对大量卡片使用懒加载技术</li>
+<li><strong>UID 验证</strong>: 在使用前验证 UID 格式（纯数字，通常 5-10 位）</li>
+</ol>
+              
+            </div>
+          </div><footer>
+  <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+    <a href="../Quiz%20API/" class="btn btn-neutral float-left"
+      title="题库测试 Quiz API"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/" class="btn btn-neutral float-right" title="新建API模块标准指南 - Quark API">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
+  </div>
+
+  <hr />
+
+  <div role="contentinfo">
+    <!-- 自定义版权与协议信息 -->
+    <p>2025 © QuarkDoc. All rights reserved.
+      <br>
+      如无特殊说明，本站所有文档遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC BY-NC-ND
+        4.0</a> 协议。
+      <br>
+      详情见<a href="../../about/">夸克文档说明</a>。
+    </p>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Quiz%20API/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../%E6%96%B0%E5%BB%BAAPI%E6%A8%A1%E5%9D%97%E6%A0%87%E5%87%86%E6%8C%87%E5%8D%97/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

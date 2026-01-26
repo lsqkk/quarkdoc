@@ -70,6 +70,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Quiz%20API/">题库测试 Quiz API</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bili-card/">Bili Card API</a>
+                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">新建API模块标准指南 - Quark API</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#_1">概述</a>
@@ -348,7 +350,15 @@ const response = {
 </code></pre>
 <h3 id="6-api-apimodulereadmemd">步骤6：创建 API 文档 (api/{module}/README.md)</h3>
 <pre><code class="language-md"># 模块中文名 {module} API - Quark API 文档
-## 按照标准 API 文档配置撰写
+## 概述
+## 统一响应结构
+## 认证与速率限制  
+## 核心概念
+## 端点索引
+## 端点详情
+## 错误代码参考
+## 客户端使用示例
+## 最佳实践
 </code></pre>
 <p>并应当复制到<code>quarkdoc</code>项目中<code>/docs/QuarkAPI/{module-name} API.md</code></p>
 <h2 id="_4">关键注意事项</h2>
@@ -442,8 +452,8 @@ const isProd = process.env.NODE_ENV === 'production';
             </div>
           </div><footer>
   <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
-    <a href="../Quiz%20API/" class="btn btn-neutral float-left"
-      title="题库测试 Quiz API"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
+    <a href="../bili-card/" class="btn btn-neutral float-left"
+      title="Bili Card API"><span class="icon icon-circle-arrow-left"></span> 上一篇</a>
     <a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" class="btn btn-neutral float-right" title="XJTU自动化25级C程序设计期末考试">下一篇 <span class="icon icon-circle-arrow-right"></span></a>
   </div>
 
@@ -472,7 +482,7 @@ const isProd = process.env.NODE_ENV === 'production';
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Quiz%20API/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../bili-card/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../../%E8%B5%84%E6%96%99/XJTU%E8%87%AA%E5%8A%A8%E5%8C%9625%E7%BA%A7C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" style="color: #fcfcfc">Next &raquo;</a></span>
