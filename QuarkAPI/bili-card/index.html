@@ -159,6 +159,7 @@
                 <h1 id="bili-card-api">Bili Card API</h1>
 <h2 id="_1">概述</h2>
 <p>Bili Card 提供简洁的 API 接口，用于生成美观的 Bilibili 用户信息展示卡片。所有接口均返回 SVG 格式图像，支持多种主题与配色方案。</p>
+<p><strong>Base URL:</strong> <code>https://bili-card.130923.xyz/api/</code></p>
 <h2 id="_2">统一响应结构</h2>
 <h3 id="svg">成功响应（SVG 卡片接口）</h3>
 <ul>
@@ -254,7 +255,7 @@
 </tbody>
 </table>
 <p><strong>示例请求</strong>:</p>
-<pre><code class="language-bash">curl &quot;https://bili-card.lsqkk.space/api/card?uid=2105459088&amp;theme=modern&amp;color=green&quot;
+<pre><code class="language-bash">curl &quot;https://bili-card.130923.xyz/api/card?uid=2105459088&amp;theme=modern&amp;color=green&quot;
 </code></pre>
 <p><strong>响应</strong>:
 - 成功: SVG 图像内容
@@ -385,7 +386,7 @@
 <h3 id="javascript">JavaScript</h3>
 <pre><code class="language-javascript">// 生成卡片 URL
 function generateCardUrl(uid, theme = 'default', color = 'blue') {
-  return `https://bili-card.lsqkk.space/api/card?uid=${uid}&amp;theme=${theme}&amp;color=${color}`;
+  return `https://bili-card.130923.xyz/api/card?uid=${uid}&amp;theme=${theme}&amp;color=${color}`;
 }
 
 // 在网页中嵌入卡片
@@ -397,7 +398,7 @@ document.getElementById('bili-card').innerHTML =
 <pre><code class="language-python">import requests
 
 def get_bili_card(uid, theme='default', color='blue'):
-    url = f&quot;https://bili-card.lsqkk.space/api/card?uid={uid}&amp;theme={theme}&amp;color={color}&quot;
+    url = f&quot;https://bili-card.130923.xyz/api/card?uid={uid}&amp;theme={theme}&amp;color={color}&quot;
     response = requests.get(url)
     if response.status_code == 200:
         with open('bili_card.svg', 'wb') as f:
@@ -407,7 +408,7 @@ def get_bili_card(uid, theme='default', color='blue'):
         print(f&quot;请求失败: {response.status_code}&quot;)
 </code></pre>
 <h3 id="github-readme">在 GitHub README 中使用</h3>
-<pre><code class="language-markdown">![我的B站卡片](https://bili-card.lsqkk.space/api/card?uid=你的UID&amp;theme=simple&amp;color=blue)
+<pre><code class="language-markdown">![我的B站卡片](https://bili-card.130923.xyz/api/card?uid=你的UID&amp;theme=simple&amp;color=blue)
 </code></pre>
 <h2 id="_10">最佳实践</h2>
 <ol>

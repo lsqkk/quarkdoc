@@ -161,7 +161,7 @@
                 <h1 id="quiz-api">题库测试 Quiz API</h1>
 <h2 id="_1">概述</h2>
 <p>Quark API Quiz 模块是一个提供多主题百科题库服务的 RESTful API。该服务支持随机抽取题目、按ID查询、范围查询以及全文搜索等功能，适用于构建问答应用、学习工具或娱乐项目。</p>
-<p><strong>Base URL:</strong> <code>https://quark-api.lsqkk.space/api</code></p>
+<p><strong>Base URL:</strong> <code>https://quark-api.130923.xyz/api</code></p>
 <p>所有响应均使用JSON格式，并遵循统一的响应结构。</p>
 <h2 id="_2">统一响应结构</h2>
 <h3 id="_3">成功响应</h3>
@@ -631,7 +631,7 @@
 <pre><code class="language-javascript">// 获取随机题目
 async function getRandomQuestion() {
   try {
-    const response = await fetch('https://quark-api.lsqkk.space/api/quiz/random?count=2');
+    const response = await fetch('https://quark-api.130923.xyz/api/quiz/random?count=2');
     const data = await response.json();
 
     if (data.success) {
@@ -649,7 +649,7 @@ async function getRandomQuestion() {
 
 // 搜索题目
 async function searchQuestions(query, page = 1) {
-  const url = new URL('https://quark-api.lsqkk.space/api/quiz/search');
+  const url = new URL('https://quark-api.130923.xyz/api/quiz/search');
   url.searchParams.set('q', query);
   url.searchParams.set('page', page);
   url.searchParams.set('limit', 10);
@@ -662,7 +662,7 @@ async function searchQuestions(query, page = 1) {
 <pre><code class="language-python">import requests
 
 def get_quiz_list():
-    response = requests.get('https://quark-api.lsqkk.space/api/quiz')
+    response = requests.get('https://quark-api.130923.xyz/api/quiz')
     data = response.json()
 
     if data['success']:
@@ -673,7 +673,7 @@ def get_quiz_list():
 
 def get_question_by_id(question_id, show_answer=False):
     params = {'showAnswer': 'true' if show_answer else 'false'}
-    response = requests.get(f'https://quark-api.lsqkk.space/api/quiz/{question_id}', params=params)
+    response = requests.get(f'https://quark-api.130923.xyz/api/quiz/{question_id}', params=params)
     return response.json()
 </code></pre>
 <h2 id="_11">最佳实践</h2>
